@@ -227,3 +227,7 @@ func minSwaps(nums []int) int {
 1. **`left` の進め方**: `if` ではなく `for` で縮小すること。1回の `right` 移動で `left` が複数回動く場合がある
 2. **Off-by-one**: ウィンドウが「満杯になるタイミング」を間違えやすい。固定幅なら `right >= k-1` で初めて結果を記録
 3. **円形配列**: `% n` を忘れるとインデックス範囲外エラー
+
+## 関連
+
+- [DFS (Depth-First Search)](/wiki/algorithms/dfs/) — グラフ・グリッド探索の基本手法

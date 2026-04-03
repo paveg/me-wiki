@@ -16,6 +16,7 @@ export default defineConfig({
 			defaultLocale: 'root',
 			locales: {
 				root: { label: '日本語', lang: 'ja' },
+				en: { label: 'English', lang: 'en' },
 			},
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/paveg/me.wiki' }],
 			lastUpdated: true,
