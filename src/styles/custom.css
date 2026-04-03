@@ -1,0 +1,138 @@
+/* -- Fonts -- */
+
+@font-face {
+	font-family: 'LINE Seed JP';
+	src: url('../fonts/LINESeedJP_OTF_Rg.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'LINE Seed JP';
+	src: url('../fonts/LINESeedJP_OTF_Bd.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* -- Theme tokens -- */
+
+:root {
+	--sl-font: 'LINE Seed JP', sans-serif;
+
+	/* Monochrome palette */
+	--sl-color-accent-low: #f5f5f5;
+	--sl-color-accent: #555;
+	--sl-color-accent-high: #111;
+	--sl-color-text: #222;
+	--sl-color-text-accent: #333;
+	--sl-color-bg: #fff;
+	--sl-color-bg-nav: #fafafa;
+	--sl-color-bg-sidebar: #fafafa;
+	--sl-color-hairline-light: #eee;
+	--sl-color-hairline: #ddd;
+
+	/* No shadows */
+	--sl-shadow-sm: none;
+	--sl-shadow-md: none;
+	--sl-shadow-lg: none;
+
+	/* Layout */
+	--sl-content-width: 50rem;
+	--sl-sidebar-width: 16rem;
+}
+
+:root[data-theme='dark'] {
+	--sl-color-accent-low: #1a1a1a;
+	--sl-color-accent: #aaa;
+	--sl-color-accent-high: #eee;
+	--sl-color-text: #ddd;
+	--sl-color-text-accent: #ccc;
+	--sl-color-bg: #111;
+	--sl-color-bg-nav: #161616;
+	--sl-color-bg-sidebar: #161616;
+	--sl-color-hairline-light: #222;
+	--sl-color-hairline: #333;
+}
+
+/* -- Subtle borders -- */
+
+header.header {
+	border-bottom: 1px solid var(--sl-color-hairline-light);
+}
+
+nav.sidebar {
+	border-right: 1px solid var(--sl-color-hairline-light);
+}
+
+/* -- Rounded corners -- */
+
+pre,
+.expressive-code .frame {
+	border-radius: 0.75rem !important;
+}
+
+input,
+button,
+select,
+textarea {
+	border-radius: 0.5rem;
+}
+
+.card,
+.starlight-aside,
+.sl-link-card {
+	border-radius: 0.75rem;
+}
+
+nav.sidebar a,
+.sidebar-content a[aria-current='page'],
+.sidebar-content a:hover,
+.sl-badge {
+	border-radius: 0.375rem;
+}
+
+starlight-menu-button button,
+[data-pagefind-ui] .pagefind-ui__search-input,
+.pagefind-ui__result {
+	border-radius: 0.5rem;
+}
+
+/* -- Mermaid diagrams: light/dark toggle -- */
+
+.mermaid-diagram {
+	margin: 1.5rem 0;
+	border-radius: 0.75rem;
+	overflow: hidden;
+}
+
+.mermaid-diagram svg {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	margin: 0 auto;
+}
+
+:root[data-theme='dark'] .mermaid-light,
+:root:not([data-theme='dark']) .mermaid-dark {
+	display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root[data-theme='auto'] .mermaid-light {
+		display: none;
+	}
+	:root[data-theme='auto'] .mermaid-dark {
+		display: block;
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	:root[data-theme='auto'] .mermaid-light {
+		display: block;
+	}
+	:root[data-theme='auto'] .mermaid-dark {
+		display: none;
+	}
+}
