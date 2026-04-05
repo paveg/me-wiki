@@ -44,6 +44,10 @@ export default defineConfig({
 					label: 'Data Structures',
 					autogenerate: { directory: 'wiki/data-structures' },
 				},
+				{
+					label: 'Math',
+					autogenerate: { directory: 'wiki/math' },
+				},
 			],
 		}),
 	],
