@@ -7,10 +7,10 @@ sidebar:
 
 ## Algorithms
 
-- [ ] Binary Search (including binary search on answer)
-- [ ] Two Pointers
-- [ ] Dynamic Programming (1D / 2D / strings / memoization)
-- [ ] Backtracking (permutations, subsets, N-Queens)
+- [x] Binary Search (including binary search on answer)
+- [x] Two Pointers
+- [x] Dynamic Programming (1D / 2D / strings / memoization)
+- [x] Backtracking (permutations, subsets, N-Queens)
 - [ ] Topological Sort
 - [ ] Union-Find (Disjoint Set)
 - [ ] Monotonic Stack
@@ -21,7 +21,7 @@ sidebar:
 
 ## Data Structures
 
-- [ ] Binary Tree / BST (traversal, construction, pathfinding)
+- [x] Binary Tree / BST (traversal, construction, pathfinding)
 - [ ] Trie
 - [ ] Linked List (reversal, merge, cycle detection)
 - [ ] Stack / Queue / Deque

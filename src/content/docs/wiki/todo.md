@@ -7,10 +7,10 @@ sidebar:
 
 ## Algorithms
 
-- [ ] Binary Search（二分探索、二分探索 on answer）
-- [ ] Two Pointers
-- [ ] Dynamic Programming（1D / 2D / 文字列 / メモ化再帰）
-- [ ] Backtracking（順列、部分集合、N-Queens）
+- [x] Binary Search（二分探索、二分探索 on answer）
+- [x] Two Pointers
+- [x] Dynamic Programming（1D / 2D / 文字列 / メモ化再帰）
+- [x] Backtracking（順列、部分集合、N-Queens）
 - [ ] Topological Sort
 - [ ] Union-Find（Disjoint Set）
 - [ ] Monotonic Stack
@@ -21,7 +21,7 @@ sidebar:
 
 ## Data Structures
 
-- [ ] Binary Tree / BST（走査、構築、パス探索）
+- [x] Binary Tree / BST（走査、構築、パス探索）
 - [ ] Trie
 - [ ] Linked List（反転、マージ、サイクル検出）
 - [ ] Stack / Queue / Deque

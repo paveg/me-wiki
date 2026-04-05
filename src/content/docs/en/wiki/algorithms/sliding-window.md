@@ -228,4 +228,5 @@ If the subsequence does not need to be contiguous (subsequence, not substring), 
 
 ## Related
 
+- [Two Pointers](/en/wiki/algorithms/two-pointers/) — A general technique for sorted array searches and linked list cycle detection
 - [DFS (Depth-First Search)](/en/wiki/algorithms/dfs/) — A fundamental graph/grid traversal technique

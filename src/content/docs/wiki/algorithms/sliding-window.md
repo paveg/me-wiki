@@ -230,4 +230,5 @@ func minSwaps(nums []int) int {
 
 ## 関連
 
+- [Two Pointers](/wiki/algorithms/two-pointers/) — ソート済み配列の探索やリンクリストのサイクル検出に使う汎用的な手法
 - [DFS (Depth-First Search)](/wiki/algorithms/dfs/) — グラフ・グリッド探索の基本手法

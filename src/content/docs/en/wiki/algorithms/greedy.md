@@ -181,6 +181,7 @@ Look for these signals in problem statements:
 
 ## Related
 
+- [Dynamic Programming](/en/wiki/algorithms/dynamic-programming/) — A technique that reuses overlapping subproblems to find optimal solutions
 - [Sliding Window](/en/wiki/algorithms/sliding-window/) — An efficient technique for searching contiguous subsequences
 - [DFS (Depth-First Search)](/en/wiki/algorithms/dfs/) — A fundamental graph/grid traversal technique
 - [BFS (Breadth-First Search)](/en/wiki/algorithms/bfs/) — A fundamental shortest-path traversal technique

@@ -181,6 +181,7 @@ func maxCount(banned []int, n int, maxSum int) int {
 
 ## 関連
 
+- [Dynamic Programming](/wiki/algorithms/dynamic-programming/) — 重複部分問題を再利用して最適解を求める手法
 - [Sliding Window](/wiki/algorithms/sliding-window/) — 連続部分列に対する効率的な探索手法
 - [DFS (Depth-First Search)](/wiki/algorithms/dfs/) — グラフ・グリッド探索の基本手法
 - [BFS (Breadth-First Search)](/wiki/algorithms/bfs/) — 最短経路探索の基本手法
