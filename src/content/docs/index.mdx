@@ -4,8 +4,11 @@ description: 個人的な学習ノート
 template: splash
 hero:
   tagline: 学びを蓄積する場所
-  actions:
-    - text: 読む
-      link: /wiki/getting-started/
-      variant: minimal
 ---
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <LinkCard title="Algorithms" href="/wiki/algorithms/sliding-window/" description="Sliding Window, DFS, BFS, Greedy" />
+  <LinkCard title="Data Structures" href="/wiki/data-structures/lru-cache/" description="LRU Cache, Heap / Priority Queue" />
+</CardGrid>

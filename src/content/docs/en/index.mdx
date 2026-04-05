@@ -4,8 +4,11 @@ description: Personal knowledge base
 template: splash
 hero:
   tagline: A place to accumulate learning
-  actions:
-    - text: Read
-      link: /en/wiki/getting-started/
-      variant: minimal
 ---
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <LinkCard title="Algorithms" href="/en/wiki/algorithms/sliding-window/" description="Sliding Window, DFS, BFS, Greedy" />
+  <LinkCard title="Data Structures" href="/en/wiki/data-structures/lru-cache/" description="LRU Cache, Heap / Priority Queue" />
+</CardGrid>
