@@ -54,25 +54,25 @@ Generic template for the Next Greater Element pattern:
 // nextGreaterElements returns the next greater element for each index.
 // If none exists, the value is -1.
 func nextGreaterElements(nums []int) []int {
-	n := len(nums)
-	result := make([]int, n)
-	for i := range result {
-		result[i] = -1
-	}
+ n := len(nums)
+ result := make([]int, n)
+ for i := range result {
+  result[i] = -1
+ }
 
-	stack := []int{} // stores indices
+ stack := []int{} // stores indices
 
-	for i := 0; i < n; i++ {
-		// Pop while current element is greater than stack top
-		for len(stack) > 0 && nums[i] > nums[stack[len(stack)-1]] {
-			top := stack[len(stack)-1]
-			stack = stack[:len(stack)-1]
-			result[top] = nums[i]
-		}
-		stack = append(stack, i)
-	}
+ for i := 0; i < n; i++ {
+  // Pop while current element is greater than stack top
+  for len(stack) > 0 && nums[i] > nums[stack[len(stack)-1]] {
+   top := stack[len(stack)-1]
+   stack = stack[:len(stack)-1]
+   result[top] = nums[i]
+  }
+  stack = append(stack, i)
+ }
 
-	return result
+ return result
 }
 ```
 
@@ -93,27 +93,27 @@ Given `nums1` as a subset of `nums2`, find the next greater element in `nums2` f
 
 ```go
 func nextGreaterElement(nums1, nums2 []int) []int {
-	// Precompute next greater for every element in nums2
-	nge := map[int]int{}
-	stack := []int{}
+ // Precompute next greater for every element in nums2
+ nge := map[int]int{}
+ stack := []int{}
 
-	for _, num := range nums2 {
-		for len(stack) > 0 && num > stack[len(stack)-1] {
-			nge[stack[len(stack)-1]] = num
-			stack = stack[:len(stack)-1]
-		}
-		stack = append(stack, num)
-	}
+ for _, num := range nums2 {
+  for len(stack) > 0 && num > stack[len(stack)-1] {
+   nge[stack[len(stack)-1]] = num
+   stack = stack[:len(stack)-1]
+  }
+  stack = append(stack, num)
+ }
 
-	result := make([]int, len(nums1))
-	for i, num := range nums1 {
-		if v, ok := nge[num]; ok {
-			result[i] = v
-		} else {
-			result[i] = -1
-		}
-	}
-	return result
+ result := make([]int, len(nums1))
+ for i, num := range nums1 {
+  if v, ok := nge[num]; ok {
+   result[i] = v
+  } else {
+   result[i] = -1
+  }
+ }
+ return result
 }
 ```
 
@@ -125,20 +125,20 @@ For each day's temperature, find how many days until a warmer temperature occurs
 
 ```go
 func dailyTemperatures(temperatures []int) []int {
-	n := len(temperatures)
-	answer := make([]int, n)
-	stack := []int{} // stores indices
+ n := len(temperatures)
+ answer := make([]int, n)
+ stack := []int{} // stores indices
 
-	for i := 0; i < n; i++ {
-		for len(stack) > 0 && temperatures[i] > temperatures[stack[len(stack)-1]] {
-			prev := stack[len(stack)-1]
-			stack = stack[:len(stack)-1]
-			answer[prev] = i - prev
-		}
-		stack = append(stack, i)
-	}
+ for i := 0; i < n; i++ {
+  for len(stack) > 0 && temperatures[i] > temperatures[stack[len(stack)-1]] {
+   prev := stack[len(stack)-1]
+   stack = stack[:len(stack)-1]
+   answer[prev] = i - prev
+  }
+  stack = append(stack, i)
+ }
 
-	return answer
+ return answer
 }
 ```
 
@@ -152,34 +152,34 @@ Use a monotonic **increasing** stack. When a bar is popped, compute the width of
 
 ```go
 func largestRectangleArea(heights []int) int {
-	stack := []int{}
-	maxArea := 0
-	n := len(heights)
+ stack := []int{}
+ maxArea := 0
+ n := len(heights)
 
-	for i := 0; i <= n; i++ {
-		// Use 0 as sentinel for the final flush
-		h := 0
-		if i < n {
-			h = heights[i]
-		}
+ for i := 0; i <= n; i++ {
+  // Use 0 as sentinel for the final flush
+  h := 0
+  if i < n {
+   h = heights[i]
+  }
 
-		for len(stack) > 0 && h < heights[stack[len(stack)-1]] {
-			top := stack[len(stack)-1]
-			stack = stack[:len(stack)-1]
+  for len(stack) > 0 && h < heights[stack[len(stack)-1]] {
+   top := stack[len(stack)-1]
+   stack = stack[:len(stack)-1]
 
-			width := i
-			if len(stack) > 0 {
-				width = i - stack[len(stack)-1] - 1
-			}
-			area := heights[top] * width
-			if area > maxArea {
-				maxArea = area
-			}
-		}
-		stack = append(stack, i)
-	}
+   width := i
+   if len(stack) > 0 {
+    width = i - stack[len(stack)-1] - 1
+   }
+   area := heights[top] * width
+   if area > maxArea {
+    maxArea = area
+   }
+  }
+  stack = append(stack, i)
+ }
 
-	return maxArea
+ return maxArea
 }
 ```
 

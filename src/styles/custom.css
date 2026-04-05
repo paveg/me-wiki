@@ -1,16 +1,16 @@
 /* -- Fonts -- */
 
 @font-face {
-	font-family: 'LINE Seed JP';
-	src: url('../fonts/LINESeedJP_OTF_Rg.woff2') format('woff2');
+	font-family: "LINE Seed JP";
+	src: url("../fonts/LINESeedJP_OTF_Rg.woff2") format("woff2");
 	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
 }
 
 @font-face {
-	font-family: 'LINE Seed JP';
-	src: url('../fonts/LINESeedJP_OTF_Bd.woff2') format('woff2');
+	font-family: "LINE Seed JP";
+	src: url("../fonts/LINESeedJP_OTF_Bd.woff2") format("woff2");
 	font-weight: 700;
 	font-style: normal;
 	font-display: swap;
@@ -19,7 +19,7 @@
 /* -- Theme tokens -- */
 
 :root {
-	--sl-font: 'LINE Seed JP', sans-serif;
+	--sl-font: "LINE Seed JP", sans-serif;
 
 	/* Monochrome palette */
 	--sl-color-accent-low: #f5f5f5;
@@ -43,7 +43,7 @@
 	--sl-sidebar-width: 16rem;
 }
 
-:root[data-theme='dark'] {
+:root[data-theme="dark"] {
 	--sl-color-accent-low: #1a1a1a;
 	--sl-color-accent: #aaa;
 	--sl-color-accent-high: #eee;
@@ -87,7 +87,7 @@ textarea {
 }
 
 nav.sidebar a,
-.sidebar-content a[aria-current='page'],
+.sidebar-content a[aria-current="page"],
 .sidebar-content a:hover,
 .sl-badge {
 	border-radius: 0.375rem;
@@ -114,25 +114,25 @@ starlight-menu-button button,
 	margin: 0 auto;
 }
 
-:root[data-theme='dark'] .mermaid-light,
-:root:not([data-theme='dark']) .mermaid-dark {
+:root[data-theme="dark"] .mermaid-light,
+:root:not([data-theme="dark"]) .mermaid-dark {
 	display: none;
 }
 
 @media (prefers-color-scheme: dark) {
-	:root[data-theme='auto'] .mermaid-light {
+	:root[data-theme="auto"] .mermaid-light {
 		display: none;
 	}
-	:root[data-theme='auto'] .mermaid-dark {
+	:root[data-theme="auto"] .mermaid-dark {
 		display: block;
 	}
 }
 
 @media (prefers-color-scheme: light) {
-	:root[data-theme='auto'] .mermaid-light {
+	:root[data-theme="auto"] .mermaid-light {
 		display: block;
 	}
-	:root[data-theme='auto'] .mermaid-dark {
+	:root[data-theme="auto"] .mermaid-dark {
 		display: none;
 	}
 }

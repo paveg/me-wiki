@@ -45,20 +45,20 @@ Basic template for the merge pattern:
 
 ```go
 func merge(intervals [][]int) [][]int {
-	sort.Slice(intervals, func(i, j int) bool {
-		return intervals[i][0] < intervals[j][0]
-	})
-	merged := [][]int{intervals[0]}
-	for i := 1; i < len(intervals); i++ {
-		last := merged[len(merged)-1]
-		if intervals[i][0] <= last[1] {
-			// Overlapping — extend the end time
-			last[1] = max(last[1], intervals[i][1])
-		} else {
-			merged = append(merged, intervals[i])
-		}
-	}
-	return merged
+ sort.Slice(intervals, func(i, j int) bool {
+  return intervals[i][0] < intervals[j][0]
+ })
+ merged := [][]int{intervals[0]}
+ for i := 1; i < len(intervals); i++ {
+  last := merged[len(merged)-1]
+  if intervals[i][0] <= last[1] {
+   // Overlapping — extend the end time
+   last[1] = max(last[1], intervals[i][1])
+  } else {
+   merged = append(merged, intervals[i])
+  }
+ }
+ return merged
 }
 ```
 
@@ -82,19 +82,19 @@ Merge all overlapping intervals and return an array of non-overlapping intervals
 
 ```go
 func merge(intervals [][]int) [][]int {
-	sort.Slice(intervals, func(i, j int) bool {
-		return intervals[i][0] < intervals[j][0]
-	})
-	merged := [][]int{intervals[0]}
-	for i := 1; i < len(intervals); i++ {
-		last := merged[len(merged)-1]
-		if intervals[i][0] <= last[1] {
-			last[1] = max(last[1], intervals[i][1])
-		} else {
-			merged = append(merged, intervals[i])
-		}
-	}
-	return merged
+ sort.Slice(intervals, func(i, j int) bool {
+  return intervals[i][0] < intervals[j][0]
+ })
+ merged := [][]int{intervals[0]}
+ for i := 1; i < len(intervals); i++ {
+  last := merged[len(merged)-1]
+  if intervals[i][0] <= last[1] {
+   last[1] = max(last[1], intervals[i][1])
+  } else {
+   merged = append(merged, intervals[i])
+  }
+ }
+ return merged
 }
 ```
 
@@ -106,31 +106,31 @@ Insert a new interval into a sorted, non-overlapping interval list and merge if 
 
 ```go
 func insert(intervals [][]int, newInterval []int) [][]int {
-	result := [][]int{}
-	i := 0
-	n := len(intervals)
+ result := [][]int{}
+ i := 0
+ n := len(intervals)
 
-	// Phase 1: add intervals that end before newInterval starts
-	for i < n && intervals[i][1] < newInterval[0] {
-		result = append(result, intervals[i])
-		i++
-	}
+ // Phase 1: add intervals that end before newInterval starts
+ for i < n && intervals[i][1] < newInterval[0] {
+  result = append(result, intervals[i])
+  i++
+ }
 
-	// Phase 2: merge overlapping intervals
-	for i < n && intervals[i][0] <= newInterval[1] {
-		newInterval[0] = min(newInterval[0], intervals[i][0])
-		newInterval[1] = max(newInterval[1], intervals[i][1])
-		i++
-	}
-	result = append(result, newInterval)
+ // Phase 2: merge overlapping intervals
+ for i < n && intervals[i][0] <= newInterval[1] {
+  newInterval[0] = min(newInterval[0], intervals[i][0])
+  newInterval[1] = max(newInterval[1], intervals[i][1])
+  i++
+ }
+ result = append(result, newInterval)
 
-	// Phase 3: add remaining intervals
-	for i < n {
-		result = append(result, intervals[i])
-		i++
-	}
+ // Phase 3: add remaining intervals
+ for i < n {
+  result = append(result, intervals[i])
+  i++
+ }
 
-	return result
+ return result
 }
 ```
 
@@ -142,18 +142,18 @@ Find the minimum number of intervals to remove so that the remaining intervals d
 
 ```go
 func eraseOverlapIntervals(intervals [][]int) int {
-	sort.Slice(intervals, func(i, j int) bool {
-		return intervals[i][1] < intervals[j][1]
-	})
-	keep := 1
-	end := intervals[0][1]
-	for i := 1; i < len(intervals); i++ {
-		if intervals[i][0] >= end {
-			keep++
-			end = intervals[i][1]
-		}
-	}
-	return len(intervals) - keep
+ sort.Slice(intervals, func(i, j int) bool {
+  return intervals[i][1] < intervals[j][1]
+ })
+ keep := 1
+ end := intervals[0][1]
+ for i := 1; i < len(intervals); i++ {
+  if intervals[i][0] >= end {
+   keep++
+   end = intervals[i][1]
+  }
+ }
+ return len(intervals) - keep
 }
 ```
 

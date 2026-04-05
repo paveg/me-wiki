@@ -1,31 +1,36 @@
 {
-  "name": "me.wiki",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/starlight": "^0.38.2",
-    "astro": "^6.0.1",
-    "katex": "0.16.44",
-    "rehype-katex": "7.0.1",
-    "remark-math": "6.0.0",
-    "sharp": "^0.34.2"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "puppeteer",
-      "sharp",
-      "workerd"
-    ]
-  },
-  "devDependencies": {
-    "wrangler": "4.80.0"
-  }
+	"name": "me.wiki",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"lint": "biome check . && markdownlint-cli2",
+		"lint:fix": "biome check --write . && markdownlint-cli2 --fix",
+		"check": "astro check"
+	},
+	"dependencies": {
+		"@astrojs/starlight": "^0.38.2",
+		"astro": "^6.0.1",
+		"katex": "0.16.44",
+		"rehype-katex": "7.0.1",
+		"remark-math": "6.0.0",
+		"sharp": "^0.34.2"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"esbuild",
+			"puppeteer",
+			"sharp",
+			"workerd"
+		]
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.4.10",
+		"markdownlint-cli2": "0.22.0",
+		"wrangler": "4.80.0"
+	}
 }

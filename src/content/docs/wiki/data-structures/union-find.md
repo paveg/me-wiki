@@ -193,6 +193,7 @@ func findRedundantConnection(edges [][]int) []int {
 ```
 
 **ポイント:**
+
 - ノードが 1-indexed のため `NewUnionFind(n + 1)` とする
 - 問題の制約上、冗長な辺は必ず 1 つ存在するので `return nil` には到達しない
 

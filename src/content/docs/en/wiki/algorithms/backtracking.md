@@ -56,6 +56,7 @@ func backtrack(result *[][]int, path []int, choices []int, start int) {
 ```
 
 **Key points:**
+
 - Since `path` is a slice, you must **always copy** it before recording the result. Otherwise subsequent operations will mutate the stored value
 - The `start` parameter controls duplicates. Use `i` (allow element reuse) or `i+1` (each element used at most once) depending on the problem
 
@@ -101,6 +102,7 @@ Backtracking complexity depends on the problem structure:
 | N-Queens | $O(n!)$ | $O(n)$ |
 
 **Why exponential or factorial:**
+
 - Each step creates multiple branches, and the number of branches multiplies
 - Subsets: 2 choices per element (include/exclude) → $2 \times 2 \times \cdots = 2^n$
 - Permutations: $n$ choices for the first position, $n-1$ for the second, … → $n \times (n-1) \times \cdots = n!$
@@ -217,6 +219,7 @@ Look for these signals in the problem statement:
 | Typical problems | Permutations, combinations, N-Queens | Number of islands, connected components | Knapsack, longest subsequence |
 
 **Decision guide:**
+
 - "Enumerate all solutions" → **Backtracking**
 - "Is it reachable / connected?" → **DFS**
 - "Maximum / minimum / how many ways" → **DP** (when subproblems overlap)

@@ -143,6 +143,7 @@ func mergeKLists(lists []*ListNode) *ListNode {
 ```
 
 **ポイント:**
+
 - ヒープのサイズは常に最大 $k$ なので、各 Push/Pop は $O(\log k)$
 - `nil` のリストをヒープに入れないようガードする
 - ダミーヘッドを使うと結果リストの組み立てが簡潔になる
@@ -230,6 +231,7 @@ func (mf *MedianFinder) FindMedian() float64 {
 ```
 
 **ポイント:**
+
 - `AddNum` は常に `lo` → `hi` → バランス調整の順で要素を流す。これにより `lo` の最大値 ≤ `hi` の最小値が保証される
 - `lo.Len() >= hi.Len()` を維持するため、要素数が奇数のときは `lo` の根が中央値
 - 各 `AddNum` は最大 3 回のヒープ操作で $O(\log n)$、`FindMedian` は $O(1)$

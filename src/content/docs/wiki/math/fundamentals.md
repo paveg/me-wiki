@@ -73,20 +73,20 @@ const mod = 1_000_000_007
 // countPaths counts the number of paths in an m x n grid using DP.
 // Each cell's value is the sum of the cell above and to the left, mod 1e9+7.
 func countPaths(m, n int) int {
-	dp := make([][]int, m)
-	for i := range dp {
-		dp[i] = make([]int, n)
-		dp[i][0] = 1
-	}
-	for j := 0; j < n; j++ {
-		dp[0][j] = 1
-	}
-	for i := 1; i < m; i++ {
-		for j := 1; j < n; j++ {
-			dp[i][j] = (dp[i-1][j] + dp[i][j-1]) % mod
-		}
-	}
-	return dp[m-1][n-1]
+ dp := make([][]int, m)
+ for i := range dp {
+  dp[i] = make([]int, n)
+  dp[i][0] = 1
+ }
+ for j := 0; j < n; j++ {
+  dp[0][j] = 1
+ }
+ for i := 1; i < m; i++ {
+  for j := 1; j < n; j++ {
+   dp[i][j] = (dp[i-1][j] + dp[i][j-1]) % mod
+  }
+ }
+ return dp[m-1][n-1]
 }
 ```
 
@@ -168,12 +168,12 @@ n > 0 && n&(n-1) == 0
 ```go
 // countBits returns the number of set bits (1s) in n.
 func countBits(n int) int {
-	count := 0
-	for n > 0 {
-		n &= n - 1 // clear the lowest set bit
-		count++
-	}
-	return count
+ count := 0
+ for n > 0 {
+  n &= n - 1 // clear the lowest set bit
+  count++
+ }
+ return count
 }
 ```
 
@@ -188,11 +188,11 @@ func countBits(n int) int {
 // Every other element appears exactly twice.
 // XOR of all elements cancels out duplicates: a ^ a = 0.
 func singleNumber(nums []int) int {
-	result := 0
-	for _, n := range nums {
-		result ^= n
-	}
-	return result
+ result := 0
+ for _, n := range nums {
+  result ^= n
+ }
+ return result
 }
 ```
 

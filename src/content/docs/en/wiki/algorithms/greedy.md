@@ -88,18 +88,18 @@ flowchart TD
 
 ```go
 func findMinArrowShots(points [][]int) int {
-	sort.Slice(points, func(i, j int) bool {
-		return points[i][1] < points[j][1]
-	})
-	result := 1
-	xEnd := points[0][1]
-	for i := 1; i < len(points); i++ {
-		if points[i][0] > xEnd {
-			result++
-			xEnd = points[i][1]
-		}
-	}
-	return result
+ sort.Slice(points, func(i, j int) bool {
+  return points[i][1] < points[j][1]
+ })
+ result := 1
+ xEnd := points[0][1]
+ for i := 1; i < len(points); i++ {
+  if points[i][0] > xEnd {
+   result++
+   xEnd = points[i][1]
+  }
+ }
+ return result
 }
 ```
 
@@ -113,15 +113,15 @@ Find the minimum number of flips to convert an all-`'0'` string into `target`. E
 
 ```go
 func minFlips(target string) int {
-	flips := 0
-	current := byte('0')
-	for i := 0; i < len(target); i++ {
-		if target[i] != current {
-			flips++
-			current = target[i]
-		}
-	}
-	return flips
+ flips := 0
+ current := byte('0')
+ for i := 0; i < len(target); i++ {
+  if target[i] != current {
+   flips++
+   current = target[i]
+  }
+ }
+ return flips
 }
 ```
 
@@ -135,20 +135,20 @@ Choose the maximum count of integers from `1` to `n`, avoiding a banned list, su
 
 ```go
 func maxCount(banned []int, n int, maxSum int) int {
-	mc := 0
-	bannedSet := make(map[int]struct{})
-	for _, b := range banned {
-		bannedSet[b] = struct{}{}
-	}
-	sum := 0
-	for i := 1; i <= n; i++ {
-		_, banned := bannedSet[i]
-		if !banned && sum+i <= maxSum {
-			sum += i
-			mc++
-		}
-	}
-	return mc
+ mc := 0
+ bannedSet := make(map[int]struct{})
+ for _, b := range banned {
+  bannedSet[b] = struct{}{}
+ }
+ sum := 0
+ for i := 1; i <= n; i++ {
+  _, banned := bannedSet[i]
+  if !banned && sum+i <= maxSum {
+   sum += i
+   mc++
+  }
+ }
+ return mc
 }
 ```
 

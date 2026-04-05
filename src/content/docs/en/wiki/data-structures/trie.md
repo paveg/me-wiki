@@ -10,6 +10,7 @@ sidebar:
 A Trie (prefix tree) is a tree structure for efficiently storing and searching a set of strings. Each node represents a single character, and a path from root to leaf corresponds to one word.
 
 **Common use cases:**
+
 - **Autocomplete**: Quickly retrieve candidates matching a typed prefix
 - **Spell checking**: Determine whether a word exists in a dictionary
 - **IP routing**: Longest prefix matching
@@ -34,6 +35,7 @@ flowchart TD
 The diagram above stores `"apple"`, `"apt"`, `"to"`, and `"top"`. The `✓` marks the `isEnd` flag indicating a complete word.
 
 **Key observations:**
+
 - `"apple"` and `"apt"` share the prefix `"ap"`
 - Searching with prefix `"ap"` efficiently enumerates all words under that subtree
 - Each node has at most 26 children (lowercase English letters only)

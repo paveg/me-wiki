@@ -143,6 +143,7 @@ func mergeKLists(lists []*ListNode) *ListNode {
 ```
 
 **Key points:**
+
 - The heap size is always at most $k$, so each Push/Pop is $O(\log k)$
 - Guard against `nil` lists before pushing into the heap
 - Using a dummy head simplifies result list construction
@@ -230,6 +231,7 @@ func (mf *MedianFinder) FindMedian() float64 {
 ```
 
 **Key points:**
+
 - `AddNum` always flows elements through `lo` then `hi` then rebalances. This guarantees max of `lo` is always less than or equal to min of `hi`
 - We maintain `lo.Len() >= hi.Len()`, so when the total count is odd the median is `lo`'s root
 - Each `AddNum` performs at most 3 heap operations — $O(\log n)$. `FindMedian` is $O(1)$

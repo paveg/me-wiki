@@ -228,6 +228,7 @@ func validate(node *TreeNode, lo, hi int) bool {
 ```
 
 **ポイント:**
+
 - `<=` / `>=` で境界値自体も排除する（BST は厳密な不等号）
 - `math.MinInt64` / `math.MaxInt64` を初期範囲にすることで、int 型の全範囲をカバー
 

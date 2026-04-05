@@ -85,6 +85,7 @@ for len(stack) > 0 {
 | Use cases | Connected components, path existence, backtracking | Shortest distance, level-order traversal |
 
 **Decision guide:**
+
 - "Shortest" is asked → **BFS**
 - "Exhaustive search", "count components", "does a path exist" → **DFS** is easier to write
 - Many problems can be solved with either. When in doubt, DFS (shorter code)
@@ -155,6 +156,7 @@ func numIslands(grid [][]byte) int {
 ```
 
 **Notes:**
+
 - Instead of maintaining a separate `visited` array, the original grid is overwritten with `'0'`. Space-efficient — $O(1)$ (excluding recursion stack)
 - Go's closure `dfs = func(i, j int)` captures `grid`, `y`, `x`, keeping the function signature simple
 

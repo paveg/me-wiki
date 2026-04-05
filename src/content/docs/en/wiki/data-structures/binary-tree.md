@@ -228,6 +228,7 @@ func validate(node *TreeNode, lo, hi int) bool {
 ```
 
 **Key points:**
+
 - Use `<=` / `>=` to exclude the boundary values (BST requires strict inequality)
 - Initialize with `math.MinInt64` / `math.MaxInt64` to cover the full int range
 

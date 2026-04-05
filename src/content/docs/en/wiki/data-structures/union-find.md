@@ -193,6 +193,7 @@ func findRedundantConnection(edges [][]int) []int {
 ```
 
 **Notes:**
+
 - Nodes are 1-indexed, so we create `NewUnionFind(n + 1)`
 - The problem guarantees exactly one redundant edge, so `return nil` is unreachable
 

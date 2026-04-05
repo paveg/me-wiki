@@ -58,40 +58,40 @@ DFS ベースでは、訪問中のノードに再び到達した場合にサイ�
 
 ```go
 func kahnTopologicalSort(numNodes int, edges [][]int) ([]int, bool) {
-	graph := make([][]int, numNodes)
-	indegree := make([]int, numNodes)
-	for _, e := range edges {
-		from, to := e[0], e[1]
-		graph[from] = append(graph[from], to)
-		indegree[to]++
-	}
+ graph := make([][]int, numNodes)
+ indegree := make([]int, numNodes)
+ for _, e := range edges {
+  from, to := e[0], e[1]
+  graph[from] = append(graph[from], to)
+  indegree[to]++
+ }
 
-	// Enqueue all nodes with indegree 0
-	queue := []int{}
-	for i := 0; i < numNodes; i++ {
-		if indegree[i] == 0 {
-			queue = append(queue, i)
-		}
-	}
+ // Enqueue all nodes with indegree 0
+ queue := []int{}
+ for i := 0; i < numNodes; i++ {
+  if indegree[i] == 0 {
+   queue = append(queue, i)
+  }
+ }
 
-	order := []int{}
-	for len(queue) > 0 {
-		node := queue[0]
-		queue = queue[1:]
-		order = append(order, node)
-		for _, neighbor := range graph[node] {
-			indegree[neighbor]--
-			if indegree[neighbor] == 0 {
-				queue = append(queue, neighbor)
-			}
-		}
-	}
+ order := []int{}
+ for len(queue) > 0 {
+  node := queue[0]
+  queue = queue[1:]
+  order = append(order, node)
+  for _, neighbor := range graph[node] {
+   indegree[neighbor]--
+   if indegree[neighbor] == 0 {
+    queue = append(queue, neighbor)
+   }
+  }
+ }
 
-	// If not all nodes are processed, a cycle exists
-	if len(order) != numNodes {
-		return nil, false
-	}
-	return order, true
+ // If not all nodes are processed, a cycle exists
+ if len(order) != numNodes {
+  return nil, false
+ }
+ return order, true
 }
 ```
 
@@ -99,55 +99,55 @@ func kahnTopologicalSort(numNodes int, edges [][]int) ([]int, bool) {
 
 ```go
 func dfsTopologicalSort(numNodes int, edges [][]int) ([]int, bool) {
-	graph := make([][]int, numNodes)
-	for _, e := range edges {
-		from, to := e[0], e[1]
-		graph[from] = append(graph[from], to)
-	}
+ graph := make([][]int, numNodes)
+ for _, e := range edges {
+  from, to := e[0], e[1]
+  graph[from] = append(graph[from], to)
+ }
 
-	const (
-		unvisited = 0
-		visiting  = 1 // currently in DFS stack (cycle detection)
-		visited   = 2
-	)
-	state := make([]int, numNodes)
-	result := make([]int, 0, numNodes)
-	hasCycle := false
+ const (
+  unvisited = 0
+  visiting  = 1 // currently in DFS stack (cycle detection)
+  visited   = 2
+ )
+ state := make([]int, numNodes)
+ result := make([]int, 0, numNodes)
+ hasCycle := false
 
-	var dfs func(node int)
-	dfs = func(node int) {
-		if hasCycle {
-			return
-		}
-		state[node] = visiting
-		for _, neighbor := range graph[node] {
-			switch state[neighbor] {
-			case visiting:
-				hasCycle = true
-				return
-			case unvisited:
-				dfs(neighbor)
-			}
-		}
-		state[node] = visited
-		result = append(result, node)
-	}
+ var dfs func(node int)
+ dfs = func(node int) {
+  if hasCycle {
+   return
+  }
+  state[node] = visiting
+  for _, neighbor := range graph[node] {
+   switch state[neighbor] {
+   case visiting:
+    hasCycle = true
+    return
+   case unvisited:
+    dfs(neighbor)
+   }
+  }
+  state[node] = visited
+  result = append(result, node)
+ }
 
-	for i := 0; i < numNodes; i++ {
-		if state[i] == unvisited {
-			dfs(i)
-		}
-	}
+ for i := 0; i < numNodes; i++ {
+  if state[i] == unvisited {
+   dfs(i)
+  }
+ }
 
-	if hasCycle {
-		return nil, false
-	}
+ if hasCycle {
+  return nil, false
+ }
 
-	// Reverse the result (postorder → topological order)
-	for l, r := 0, len(result)-1; l < r; l, r = l+1, r-1 {
-		result[l], result[r] = result[r], result[l]
-	}
-	return result, true
+ // Reverse the result (postorder → topological order)
+ for l, r := 0, len(result)-1; l < r; l, r = l+1, r-1 {
+  result[l], result[r] = result[r], result[l]
+ }
+ return result, true
 }
 ```
 
@@ -172,35 +172,35 @@ $n$ 個の科目と前提条件のリストが与えられる。すべての科�
 
 ```go
 func canFinish(numCourses int, prerequisites [][]int) bool {
-	graph := make([][]int, numCourses)
-	indegree := make([]int, numCourses)
-	for _, p := range prerequisites {
-		course, prereq := p[0], p[1]
-		graph[prereq] = append(graph[prereq], course)
-		indegree[course]++
-	}
+ graph := make([][]int, numCourses)
+ indegree := make([]int, numCourses)
+ for _, p := range prerequisites {
+  course, prereq := p[0], p[1]
+  graph[prereq] = append(graph[prereq], course)
+  indegree[course]++
+ }
 
-	queue := []int{}
-	for i := 0; i < numCourses; i++ {
-		if indegree[i] == 0 {
-			queue = append(queue, i)
-		}
-	}
+ queue := []int{}
+ for i := 0; i < numCourses; i++ {
+  if indegree[i] == 0 {
+   queue = append(queue, i)
+  }
+ }
 
-	processed := 0
-	for len(queue) > 0 {
-		node := queue[0]
-		queue = queue[1:]
-		processed++
-		for _, neighbor := range graph[node] {
-			indegree[neighbor]--
-			if indegree[neighbor] == 0 {
-				queue = append(queue, neighbor)
-			}
-		}
-	}
+ processed := 0
+ for len(queue) > 0 {
+  node := queue[0]
+  queue = queue[1:]
+  processed++
+  for _, neighbor := range graph[node] {
+   indegree[neighbor]--
+   if indegree[neighbor] == 0 {
+    queue = append(queue, neighbor)
+   }
+  }
+ }
 
-	return processed == numCourses
+ return processed == numCourses
 }
 ```
 
@@ -210,38 +210,38 @@ func canFinish(numCourses int, prerequisites [][]int) bool {
 
 ```go
 func findOrder(numCourses int, prerequisites [][]int) []int {
-	graph := make([][]int, numCourses)
-	indegree := make([]int, numCourses)
-	for _, p := range prerequisites {
-		course, prereq := p[0], p[1]
-		graph[prereq] = append(graph[prereq], course)
-		indegree[course]++
-	}
+ graph := make([][]int, numCourses)
+ indegree := make([]int, numCourses)
+ for _, p := range prerequisites {
+  course, prereq := p[0], p[1]
+  graph[prereq] = append(graph[prereq], course)
+  indegree[course]++
+ }
 
-	queue := []int{}
-	for i := 0; i < numCourses; i++ {
-		if indegree[i] == 0 {
-			queue = append(queue, i)
-		}
-	}
+ queue := []int{}
+ for i := 0; i < numCourses; i++ {
+  if indegree[i] == 0 {
+   queue = append(queue, i)
+  }
+ }
 
-	order := []int{}
-	for len(queue) > 0 {
-		node := queue[0]
-		queue = queue[1:]
-		order = append(order, node)
-		for _, neighbor := range graph[node] {
-			indegree[neighbor]--
-			if indegree[neighbor] == 0 {
-				queue = append(queue, neighbor)
-			}
-		}
-	}
+ order := []int{}
+ for len(queue) > 0 {
+  node := queue[0]
+  queue = queue[1:]
+  order = append(order, node)
+  for _, neighbor := range graph[node] {
+   indegree[neighbor]--
+   if indegree[neighbor] == 0 {
+    queue = append(queue, neighbor)
+   }
+  }
+ }
 
-	if len(order) != numCourses {
-		return []int{}
-	}
-	return order
+ if len(order) != numCourses {
+  return []int{}
+ }
+ return order
 }
 ```
 

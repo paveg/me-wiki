@@ -48,6 +48,7 @@ flowchart TD
 | デバッグ | 再帰の追跡が難しい | ループなので比較的容易 |
 
 **使い分け:**
+
 - 全状態を使うなら **Bottom-up** が高速かつ省メモリ
 - 状態空間が広いが実際に使う状態が少ないなら **Top-down** が有利
 - 面接では Bottom-up を先に検討し、状態遷移が複雑なら Top-down にフォールバック
@@ -65,14 +66,14 @@ flowchart TD
 ```go
 // Climbing Stairs: dp[i] = dp[i-1] + dp[i-2]
 func climbStairs(n int) int {
-	if n <= 2 {
-		return n
-	}
-	prev2, prev1 := 1, 2
-	for i := 3; i <= n; i++ {
-		prev2, prev1 = prev1, prev2+prev1
-	}
-	return prev1
+ if n <= 2 {
+  return n
+ }
+ prev2, prev1 := 1, 2
+ for i := 3; i <= n; i++ {
+  prev2, prev1 = prev1, prev2+prev1
+ }
+ return prev1
 }
 ```
 
@@ -116,24 +117,24 @@ Bottom-up 1D DP の基本形:
 
 ```go
 func solve(nums []int) int {
-	n := len(nums)
-	if n == 0 {
-		return 0
-	}
+ n := len(nums)
+ if n == 0 {
+  return 0
+ }
 
-	// Define DP table
-	dp := make([]int, n)
+ // Define DP table
+ dp := make([]int, n)
 
-	// Base case
-	dp[0] = nums[0]
+ // Base case
+ dp[0] = nums[0]
 
-	// Fill table from small to large
-	for i := 1; i < n; i++ {
-		// State transition: dp[i] depends on dp[i-1], dp[i-2], etc.
-		dp[i] = max(dp[i-1], dp[i-2]+nums[i])
-	}
+ // Fill table from small to large
+ for i := 1; i < n; i++ {
+  // State transition: dp[i] depends on dp[i-1], dp[i-2], etc.
+  dp[i] = max(dp[i-1], dp[i-2]+nums[i])
+ }
 
-	return dp[n-1]
+ return dp[n-1]
 }
 ```
 
@@ -163,14 +164,14 @@ $$\text{計算量} = \text{状態数} \times \text{各状態の遷移コスト}$
 
 ```go
 func climbStairs(n int) int {
-	if n <= 2 {
-		return n
-	}
-	prev2, prev1 := 1, 2
-	for i := 3; i <= n; i++ {
-		prev2, prev1 = prev1, prev2+prev1
-	}
-	return prev1
+ if n <= 2 {
+  return n
+ }
+ prev2, prev1 := 1, 2
+ for i := 3; i <= n; i++ {
+  prev2, prev1 = prev1, prev2+prev1
+ }
+ return prev1
 }
 ```
 
@@ -184,16 +185,16 @@ func climbStairs(n int) int {
 
 ```go
 func rob(nums []int) int {
-	n := len(nums)
-	if n == 1 {
-		return nums[0]
-	}
+ n := len(nums)
+ if n == 1 {
+  return nums[0]
+ }
 
-	prev2, prev1 := 0, nums[0]
-	for i := 1; i < n; i++ {
-		prev2, prev1 = prev1, max(prev1, prev2+nums[i])
-	}
-	return prev1
+ prev2, prev1 := 0, nums[0]
+ for i := 1; i < n; i++ {
+  prev2, prev1 = prev1, max(prev1, prev2+nums[i])
+ }
+ return prev1
 }
 ```
 
@@ -207,25 +208,25 @@ func rob(nums []int) int {
 
 ```go
 func coinChange(coins []int, amount int) int {
-	dp := make([]int, amount+1)
-	// Initialize with a value larger than any valid answer
-	for i := 1; i <= amount; i++ {
-		dp[i] = amount + 1
-	}
-	dp[0] = 0
+ dp := make([]int, amount+1)
+ // Initialize with a value larger than any valid answer
+ for i := 1; i <= amount; i++ {
+  dp[i] = amount + 1
+ }
+ dp[0] = 0
 
-	for i := 1; i <= amount; i++ {
-		for _, coin := range coins {
-			if coin <= i && dp[i-coin]+1 < dp[i] {
-				dp[i] = dp[i-coin] + 1
-			}
-		}
-	}
+ for i := 1; i <= amount; i++ {
+  for _, coin := range coins {
+   if coin <= i && dp[i-coin]+1 < dp[i] {
+    dp[i] = dp[i-coin] + 1
+   }
+  }
+ }
 
-	if dp[amount] > amount {
-		return -1
-	}
-	return dp[amount]
+ if dp[amount] > amount {
+  return -1
+ }
+ return dp[amount]
 }
 ```
 

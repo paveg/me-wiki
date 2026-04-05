@@ -48,6 +48,7 @@ flowchart TD
 | Debugging | Hard to trace recursion | Relatively easy with loops |
 
 **When to use which:**
+
 - If all states are needed, **bottom-up** is faster and more memory-efficient
 - If the state space is large but few states are actually visited, **top-down** is advantageous
 - In interviews, try bottom-up first and fall back to top-down if transitions are complex
@@ -65,14 +66,14 @@ The most basic pattern: compute the current state from previous states on a 1D a
 ```go
 // Climbing Stairs: dp[i] = dp[i-1] + dp[i-2]
 func climbStairs(n int) int {
-	if n <= 2 {
-		return n
-	}
-	prev2, prev1 := 1, 2
-	for i := 3; i <= n; i++ {
-		prev2, prev1 = prev1, prev2+prev1
-	}
-	return prev1
+ if n <= 2 {
+  return n
+ }
+ prev2, prev1 := 1, 2
+ for i := 3; i <= n; i++ {
+  prev2, prev1 = prev1, prev2+prev1
+ }
+ return prev1
 }
 ```
 
@@ -116,24 +117,24 @@ Basic bottom-up 1D DP structure:
 
 ```go
 func solve(nums []int) int {
-	n := len(nums)
-	if n == 0 {
-		return 0
-	}
+ n := len(nums)
+ if n == 0 {
+  return 0
+ }
 
-	// Define DP table
-	dp := make([]int, n)
+ // Define DP table
+ dp := make([]int, n)
 
-	// Base case
-	dp[0] = nums[0]
+ // Base case
+ dp[0] = nums[0]
 
-	// Fill table from small to large
-	for i := 1; i < n; i++ {
-		// State transition: dp[i] depends on dp[i-1], dp[i-2], etc.
-		dp[i] = max(dp[i-1], dp[i-2]+nums[i])
-	}
+ // Fill table from small to large
+ for i := 1; i < n; i++ {
+  // State transition: dp[i] depends on dp[i-1], dp[i-2], etc.
+  dp[i] = max(dp[i-1], dp[i-2]+nums[i])
+ }
 
-	return dp[n-1]
+ return dp[n-1]
 }
 ```
 
@@ -163,14 +164,14 @@ Find the number of ways to reach the top of an $n$-step staircase, taking 1 or 2
 
 ```go
 func climbStairs(n int) int {
-	if n <= 2 {
-		return n
-	}
-	prev2, prev1 := 1, 2
-	for i := 3; i <= n; i++ {
-		prev2, prev1 = prev1, prev2+prev1
-	}
-	return prev1
+ if n <= 2 {
+  return n
+ }
+ prev2, prev1 := 1, 2
+ for i := 3; i <= n; i++ {
+  prev2, prev1 = prev1, prev2+prev1
+ }
+ return prev1
 }
 ```
 
@@ -184,16 +185,16 @@ Find the maximum amount that can be robbed given that adjacent houses cannot bot
 
 ```go
 func rob(nums []int) int {
-	n := len(nums)
-	if n == 1 {
-		return nums[0]
-	}
+ n := len(nums)
+ if n == 1 {
+  return nums[0]
+ }
 
-	prev2, prev1 := 0, nums[0]
-	for i := 1; i < n; i++ {
-		prev2, prev1 = prev1, max(prev1, prev2+nums[i])
-	}
-	return prev1
+ prev2, prev1 := 0, nums[0]
+ for i := 1; i < n; i++ {
+  prev2, prev1 = prev1, max(prev1, prev2+nums[i])
+ }
+ return prev1
 }
 ```
 
@@ -207,25 +208,25 @@ Given coin denominations, find the minimum number of coins to make `amount`. Eac
 
 ```go
 func coinChange(coins []int, amount int) int {
-	dp := make([]int, amount+1)
-	// Initialize with a value larger than any valid answer
-	for i := 1; i <= amount; i++ {
-		dp[i] = amount + 1
-	}
-	dp[0] = 0
+ dp := make([]int, amount+1)
+ // Initialize with a value larger than any valid answer
+ for i := 1; i <= amount; i++ {
+  dp[i] = amount + 1
+ }
+ dp[0] = 0
 
-	for i := 1; i <= amount; i++ {
-		for _, coin := range coins {
-			if coin <= i && dp[i-coin]+1 < dp[i] {
-				dp[i] = dp[i-coin] + 1
-			}
-		}
-	}
+ for i := 1; i <= amount; i++ {
+  for _, coin := range coins {
+   if coin <= i && dp[i-coin]+1 < dp[i] {
+    dp[i] = dp[i-coin] + 1
+   }
+  }
+ }
 
-	if dp[amount] > amount {
-		return -1
-	}
-	return dp[amount]
+ if dp[amount] > amount {
+  return -1
+ }
+ return dp[amount]
 }
 ```
 
