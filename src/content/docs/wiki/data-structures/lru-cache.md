@@ -174,6 +174,7 @@ func (this *LRUCache) Put(key int, value int) {
 
 ## 関連
 
+- [Linked List](/wiki/data-structures/linked-list/) — 連結リストの反転・マージ・サイクル検出
 - [DFS (Depth-First Search)](/wiki/algorithms/dfs/) — グラフ・グリッド探索の基本手法
 - [Sliding Window](/wiki/algorithms/sliding-window/) — 配列上の別の探索パターン
 - [BFS (Breadth-First Search)](/wiki/algorithms/bfs/) — 幅優先探索

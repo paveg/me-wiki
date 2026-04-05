@@ -181,6 +181,7 @@ func maxCount(banned []int, n int, maxSum int) int {
 
 ## 関連
 
+- [Merge Intervals](/wiki/algorithms/merge-intervals/) — 区間のマージ・挿入・重なり除去（貪欲法の典型応用）
 - [Dynamic Programming](/wiki/algorithms/dynamic-programming/) — 重複部分問題を再利用して最適解を求める手法
 - [Sliding Window](/wiki/algorithms/sliding-window/) — 連続部分列に対する効率的な探索手法
 - [DFS (Depth-First Search)](/wiki/algorithms/dfs/) — グラフ・グリッド探索の基本手法

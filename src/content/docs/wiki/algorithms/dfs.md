@@ -175,4 +175,6 @@ func numIslands(grid [][]byte) int {
 ## 関連
 
 - [BFS (Breadth-First Search)](/wiki/algorithms/bfs/) — 幅優先探索。最短経路やレベル順走査に強い
+- [Topological Sort](/wiki/algorithms/topological-sort/) — DFS の帰りがけ順を利用した DAG のトポロジカルソート
+- [Union-Find](/wiki/data-structures/union-find/) — 辺が動的に追加される連結成分問題に強い
 - [Sliding Window](/wiki/algorithms/sliding-window/) — 配列上の別の探索パターン

@@ -175,4 +175,6 @@ func numIslands(grid [][]byte) int {
 ## Related
 
 - [BFS (Breadth-First Search)](/en/wiki/algorithms/bfs/) — Breadth-first traversal. Best for shortest paths and level-order traversal
+- [Topological Sort](/en/wiki/algorithms/topological-sort/) — DFS postorder drives one of the two main topological sort approaches
+- [Union-Find](/en/wiki/data-structures/union-find/) — Efficient for connected component problems with dynamic edge insertion
 - [Sliding Window](/en/wiki/algorithms/sliding-window/) — A different exploration pattern for arrays

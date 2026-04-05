@@ -11,25 +11,27 @@ sidebar:
 - [x] Two Pointers
 - [x] Dynamic Programming (1D / 2D / strings / memoization)
 - [x] Backtracking (permutations, subsets, N-Queens)
-- [ ] Topological Sort
-- [ ] Union-Find (Disjoint Set)
-- [ ] Monotonic Stack
-- [ ] Merge Intervals
+- [x] Topological Sort
+- [x] Monotonic Stack
+- [x] Merge Intervals
 - [ ] Bit Manipulation
-- [ ] Recursion
 - [ ] Sorting (Quick Sort, Merge Sort, Counting Sort)
 
 ## Data Structures
 
 - [x] Binary Tree / BST (traversal, construction, pathfinding)
-- [ ] Trie
-- [ ] Linked List (reversal, merge, cycle detection)
-- [ ] Stack / Queue / Deque
-- [ ] Graph (adjacency list, adjacency matrix, weighted graphs)
+- [x] Union-Find (Disjoint Set)
+- [x] Linked List (reversal, merge, cycle detection)
+- [x] Trie
 
 ## Patterns
 
-- [ ] Fast & Slow Pointers (cycle detection)
 - [ ] Prefix Sum
 - [ ] Kadane's Algorithm (maximum subarray sum)
 - [ ] Dijkstra / Bellman-Ford (shortest path)
+
+## Math
+
+- [ ] Logarithms (understanding complexity)
+- [ ] Modular arithmetic (mod $10^9+7$)
+- [ ] Combinations & permutations (nCr, nPr)

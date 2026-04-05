@@ -219,6 +219,7 @@ func moveZeroes(nums []int) {
 
 ## 関連
 
+- [Linked List](/wiki/data-structures/linked-list/) — Fast & Slow ポインタによるサイクル検出・中間ノード取得
 - [Sliding Window](/wiki/algorithms/sliding-window/) — 連続部分列に特化した Two Pointers の派生パターン
 - [DFS (Depth-First Search)](/wiki/algorithms/dfs/) — グラフ・グリッド探索の基本手法
 - [BFS (Breadth-First Search)](/wiki/algorithms/bfs/) — 最短経路探索の基本手法

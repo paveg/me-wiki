@@ -11,25 +11,27 @@ sidebar:
 - [x] Two Pointers
 - [x] Dynamic Programming（1D / 2D / 文字列 / メモ化再帰）
 - [x] Backtracking（順列、部分集合、N-Queens）
-- [ ] Topological Sort
-- [ ] Union-Find（Disjoint Set）
-- [ ] Monotonic Stack
-- [ ] Merge Intervals
+- [x] Topological Sort
+- [x] Monotonic Stack
+- [x] Merge Intervals
 - [ ] Bit Manipulation
-- [ ] Recursion
 - [ ] Sorting（Quick Sort, Merge Sort, Counting Sort）
 
 ## Data Structures
 
 - [x] Binary Tree / BST（走査、構築、パス探索）
-- [ ] Trie
-- [ ] Linked List（反転、マージ、サイクル検出）
-- [ ] Stack / Queue / Deque
-- [ ] Graph（隣接リスト、隣接行列、重み付きグラフ）
+- [x] Union-Find（Disjoint Set）
+- [x] Linked List（反転、マージ、サイクル検出）
+- [x] Trie
 
 ## Patterns
 
-- [ ] Fast & Slow Pointers（サイクル検出）
 - [ ] Prefix Sum
 - [ ] Kadane's Algorithm（最大部分配列和）
 - [ ] Dijkstra / Bellman-Ford（最短経路）
+
+## Math
+
+- [ ] 対数（計算量の理解）
+- [ ] 剰余演算（mod $10^9+7$）
+- [ ] 組合せ・順列（nCr, nPr）

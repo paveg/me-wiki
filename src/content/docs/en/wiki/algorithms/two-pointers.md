@@ -219,6 +219,7 @@ If the subsequence must be **contiguous**, consider [Sliding Window](/en/wiki/al
 
 ## Related
 
+- [Linked List](/en/wiki/data-structures/linked-list/) — Fast & slow pointers for cycle detection and finding the middle node
 - [Sliding Window](/en/wiki/algorithms/sliding-window/) — A Two Pointers variant specialized for contiguous subsequences
 - [DFS (Depth-First Search)](/en/wiki/algorithms/dfs/) — A fundamental graph/grid traversal technique
 - [BFS (Breadth-First Search)](/en/wiki/algorithms/bfs/) — A fundamental shortest-path traversal technique

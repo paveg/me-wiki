@@ -125,4 +125,5 @@ If "shortest" is not required, [DFS](/en/wiki/algorithms/dfs/) is often shorter 
 ## Related
 
 - [DFS (Depth-First Search)](/en/wiki/algorithms/dfs/) — Depth-first traversal. Better for connected components and backtracking
+- [Topological Sort](/en/wiki/algorithms/topological-sort/) — Kahn's algorithm applies BFS to topological sorting
 - [Sliding Window](/en/wiki/algorithms/sliding-window/) — A different exploration pattern for arrays

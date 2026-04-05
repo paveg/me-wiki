@@ -174,6 +174,7 @@ func (this *LRUCache) Put(key int, value int) {
 
 ## Related
 
+- [Linked List](/en/wiki/data-structures/linked-list/) — Linked list reversal, merge, and cycle detection
 - [DFS (Depth-First Search)](/en/wiki/algorithms/dfs/) — Fundamental graph/grid traversal technique
 - [Sliding Window](/en/wiki/algorithms/sliding-window/) — A different exploration pattern for arrays
 - [BFS (Breadth-First Search)](/en/wiki/algorithms/bfs/) — Breadth-first traversal
