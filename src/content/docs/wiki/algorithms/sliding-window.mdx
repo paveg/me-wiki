@@ -5,6 +5,8 @@ sidebar:
   order: 1
 ---
 
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
 ## 概要
 
 Sliding Window（スライディングウィンドウ）[^1] は、配列や文字列の**連続する部分列**に対して条件を満たす解を効率的に探索する手法。ナイーブな二重ループ $O(n^2)$ を $O(n)$ に削減できることが多い。
@@ -42,6 +44,8 @@ graph LR
 
 **テンプレート:**
 
+<Tabs>
+<TabItem label="Go">
 ```go
 // k: window size
 for right := 0; right < len(arr); right++ {
@@ -54,6 +58,44 @@ for right := 0; right < len(arr); right++ {
     }
 }
 ```
+</TabItem>
+<TabItem label="Python">
+```python
+for right in range(len(arr)):
+    # add arr[right] to window state
+    if right >= k:
+        # remove arr[right - k] from window state
+    if right >= k - 1:
+        # window is full — record result
+```
+</TabItem>
+<TabItem label="TypeScript">
+```typescript
+for (let right = 0; right < arr.length; right++) {
+  // add arr[right] to window state
+  if (right >= k) {
+    // remove arr[right - k] from window state
+  }
+  if (right >= k - 1) {
+    // window is full — record result
+  }
+}
+```
+</TabItem>
+<TabItem label="MoonBit">
+```moonbit
+for right = 0; right < arr.length(); right = right + 1 {
+  // add arr[right] to window state
+  if right >= k {
+    // remove arr[right - k] from window state
+  }
+  if right >= k - 1 {
+    // window is full — record result
+  }
+}
+```
+</TabItem>
+</Tabs>
 
 ### 可変幅ウィンドウ（Variable-size）
 
@@ -63,6 +105,8 @@ for right := 0; right < len(arr); right++ {
 
 **テンプレート:**
 
+<Tabs>
+<TabItem label="Go">
 ```go
 left := 0
 for right := 0; right < len(arr); right++ {
@@ -74,6 +118,45 @@ for right := 0; right < len(arr); right++ {
     // update result (e.g., max length = right - left + 1)
 }
 ```
+</TabItem>
+<TabItem label="Python">
+```python
+left = 0
+for right in range(len(arr)):
+    # add arr[right] to window state
+    while window_violates_condition:
+        # remove arr[left] from window state
+        left += 1
+    # update result (e.g., max length = right - left + 1)
+```
+</TabItem>
+<TabItem label="TypeScript">
+```typescript
+let left = 0;
+for (let right = 0; right < arr.length; right++) {
+  // add arr[right] to window state
+  while (/* window violates condition */) {
+    // remove arr[left] from window state
+    left++;
+  }
+  // update result (e.g., max length = right - left + 1)
+}
+```
+</TabItem>
+<TabItem label="MoonBit">
+```moonbit
+let mut left = 0
+for right = 0; right < arr.length(); right = right + 1 {
+  // add arr[right] to window state
+  while window_violates_condition {
+    // remove arr[left] from window state
+    left = left + 1
+  }
+  // update result
+}
+```
+</TabItem>
+</Tabs>
 
 ## 計算量
 
@@ -103,12 +186,13 @@ flowchart TD
     F --> C
 ```
 
+<Tabs>
+<TabItem label="Go">
 ```go
 func findAnagrams(s string, p string) []int {
     if len(s) < len(p) {
         return nil
     }
-
     result := []int{}
     var sCount, pCount [26]int
     for i := 0; i < len(p); i++ {
@@ -118,7 +202,6 @@ func findAnagrams(s string, p string) []int {
     if sCount == pCount {
         result = append(result, 0)
     }
-
     for i := len(p); i < len(s); i++ {
         sCount[s[i]-'a']++
         sCount[s[i-len(p)]-'a']--
@@ -129,8 +212,81 @@ func findAnagrams(s string, p string) []int {
     return result
 }
 ```
+</TabItem>
+<TabItem label="Python">
+```python
+def findAnagrams(s: str, p: str) -> list[int]:
+    if len(s) < len(p):
+        return []
+    result = []
+    s_count = [0] * 26
+    p_count = [0] * 26
+    for c in p:
+        p_count[ord(c) - ord('a')] += 1
+    for i in range(len(p)):
+        s_count[ord(s[i]) - ord('a')] += 1
+    if s_count == p_count:
+        result.append(0)
+    for i in range(len(p), len(s)):
+        s_count[ord(s[i]) - ord('a')] += 1
+        s_count[ord(s[i - len(p)]) - ord('a')] -= 1
+        if s_count == p_count:
+            result.append(i - len(p) + 1)
+    return result
+```
+</TabItem>
+<TabItem label="TypeScript">
+```typescript
+function findAnagrams(s: string, p: string): number[] {
+  if (s.length < p.length) return [];
+  const result: number[] = [];
+  const sCount = new Array(26).fill(0);
+  const pCount = new Array(26).fill(0);
+  const a = 'a'.charCodeAt(0);
+  for (const c of p) pCount[c.charCodeAt(0) - a]++;
+  for (let i = 0; i < p.length; i++) sCount[s.charCodeAt(i) - a]++;
+  if (sCount.every((v, i) => v === pCount[i])) result.push(0);
+  for (let i = p.length; i < s.length; i++) {
+    sCount[s.charCodeAt(i) - a]++;
+    sCount[s.charCodeAt(i - p.length) - a]--;
+    if (sCount.every((v, j) => v === pCount[j])) {
+      result.push(i - p.length + 1);
+    }
+  }
+  return result;
+}
+```
+</TabItem>
+<TabItem label="MoonBit">
+```moonbit
+fn find_anagrams(s : String, p : String) -> Array[Int] {
+  if s.length() < p.length() {
+    return []
+  }
+  let result : Array[Int] = []
+  let s_count = Array::make(26, 0)
+  let p_count = Array::make(26, 0)
+  for i = 0; i < p.length(); i = i + 1 {
+    p_count[p[i].to_int() - 'a'.to_int()] += 1
+    s_count[s[i].to_int() - 'a'.to_int()] += 1
+  }
+  if s_count == p_count {
+    result.push(0)
+  }
+  for i = p.length(); i < s.length(); i = i + 1 {
+    s_count[s[i].to_int() - 'a'.to_int()] += 1
+    s_count[s[i - p.length()].to_int() - 'a'.to_int()] -= 1
+    if s_count == p_count {
+      result.push(i - p.length() + 1)
+    }
+  }
+  result
+}
+```
+</TabItem>
+</Tabs>
 
-**ポイント:** Go では固定長配列 `[26]int` の比較が `==` で可能。HashMap を使う言語では毎回比較に $O(26)$ かかるが、アルファベットサイズは定数なので全体は $O(n)$。
+**ポイント:** Go では固定長配列 `[26]int` の比較が `==` で可能。Python もリスト同士の `==` で比較できる。TypeScript は `every` で要素ごとの比較が必要。
 
 ### [1151. Minimum Swaps to Group All 1's Together](https://leetcode.com/problems/minimum-swaps-to-group-all-1s-together/) — 固定幅
 
