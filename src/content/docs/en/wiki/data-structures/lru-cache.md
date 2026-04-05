@@ -16,7 +16,7 @@ In interviews it typically appears as "design a cache where Get and Put both run
 The HashMap provides $O(1)$ key-to-node lookup, while the doubly linked list maintains access order. The head of the list represents the most recently used entry; the tail represents the least recently used.
 
 ```moonmaid
-flowchart LR { HM["HashMap key->Node*"] -> N1 [style=dashed] HM -> N2 [style=dashed] HM -> N3 [style=dashed] H["Head (sentinel)"] -> N1["Node A key=1, val=10"] N1 -> N2["Node B key=2, val=20"] N2 -> N3["Node C key=3, val=30"] N3 -> T["Tail (sentinel)"] }
+flowchart LR { HM["HashMap key->Node*"] -> N1 HM -> N2 HM -> N3 H["Head (sentinel)"] -> N1["Node A key=1, val=10"] N1 -> N2["Node B key=2, val=20"] N2 -> N3["Node C key=3, val=30"] N3 -> T["Tail (sentinel)"] }
 ```
 
 **Head side = most recent, Tail side = least recent.** Head and Tail are sentinel nodes that hold no data[^1].
