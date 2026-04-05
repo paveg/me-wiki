@@ -33,6 +33,7 @@ export default defineConfig({
 					label: 'Wiki',
 					items: [
 						{ slug: 'wiki/getting-started' },
+						{ slug: 'wiki/todo' },
 					],
 				},
 				{
