@@ -16,6 +16,7 @@
 		"@astrojs/starlight": "^0.38.2",
 		"astro": "^6.0.1",
 		"katex": "0.16.44",
+		"moonmaid": "link:../moonmaid/ts",
 		"rehype-katex": "7.0.1",
 		"remark-math": "6.0.0",
 		"sharp": "^0.34.2"

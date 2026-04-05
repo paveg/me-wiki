@@ -18,3 +18,13 @@ graph LR
     C --> D["図解で整理"]
     D --> A
 ```
+
+## moonmaid テスト
+
+```moonmaid
+array { [3, 1, 4, 1, 5, 9] }
+```
+
+```moonmaid
+tree bst { insert(5, 3, 7, 1, 4) }
+```

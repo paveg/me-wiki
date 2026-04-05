@@ -4,9 +4,19 @@ import starlight from "@astrojs/starlight";
 import { defineConfig } from "astro/config";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
+import remarkMoonmaid from "moonmaid/remark-plugin";
+
+const moonmaidWasmPath = new URL(
+	"../moonmaid/_build/wasm-gc/release/build/lib/lib.wasm",
+	import.meta.url,
+).href;
+
 export default defineConfig({
 	markdown: {
-		remarkPlugins: [remarkMath],
+		remarkPlugins: [
+			remarkMath,
+			[remarkMoonmaid, { wasmPath: moonmaidWasmPath }],
+		],
 		rehypePlugins: [rehypeKatex],
 	},
 	integrations: [

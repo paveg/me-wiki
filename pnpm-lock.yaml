@@ -17,6 +17,9 @@ importers:
       katex:
         specifier: 0.16.44
         version: 0.16.44
+      moonmaid:
+        specifier: link:../moonmaid/ts
+        version: link:../moonmaid/ts
       rehype-katex:
         specifier: 7.0.1
         version: 7.0.1
