@@ -20,6 +20,10 @@ It is one of the most frequently asked patterns in coding interviews.
 
 Since each element enters and leaves the window at most once, the overall complexity is $O(n)$.
 
+```moonmaid
+array { [1, 3, 2, 5, 1, 4] highlight(1..3, color=blue, label="window") }
+```
+
 ```mermaid
 graph LR
     a1["1"] --- a2["3"] --- a3["2"] --- a4["5"] --- a5["1"] --- a6["4"]

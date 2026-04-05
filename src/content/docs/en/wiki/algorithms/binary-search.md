@@ -20,6 +20,10 @@ Compared to linear search $O(n)$, it is dramatically faster. While it is a funda
 
 Since the search range halves at each step, the overall complexity is $O(\log n)$.
 
+```moonmaid
+array { [1, 3, 5, 7, 9, 11, 13] highlight(3, color=red, label="mid") highlight(0, color=blue, label="left") highlight(6, color=blue, label="right") }
+```
+
 ```mermaid
 flowchart TD
     A["left = 0, right = n - 1"] --> B["mid = left + (right - left) / 2"]

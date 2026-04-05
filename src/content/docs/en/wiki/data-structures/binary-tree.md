@@ -20,6 +20,10 @@ Key terminology:
 
 Binary trees are a staple of coding interviews, testing recursive divide-and-conquer thinking.
 
+```moonmaid
+tree bst { insert(4, 2, 6, 1, 3, 5, 7) }
+```
+
 ```go
 type TreeNode struct {
     Val         int

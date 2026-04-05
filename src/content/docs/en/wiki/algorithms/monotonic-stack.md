@@ -13,6 +13,10 @@ A naive approach that linearly scans rightward for each element costs $O(n^2)$. 
 
 It is one of the most frequently asked patterns in coding interviews and contests.
 
+```moonmaid
+array { [2, 1, 5, 6, 2, 3] }
+```
+
 ## Core Idea
 
 1. Iterate through the array from left to right, pushing each element onto the stack

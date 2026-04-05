@@ -20,6 +20,10 @@ sidebar:
 
 コーディング面接では、再帰的な分割統治の考え方を問う問題として頻出する。
 
+```moonmaid
+tree bst { insert(4, 2, 6, 1, 3, 5, 7) }
+```
+
 ```go
 type TreeNode struct {
     Val         int

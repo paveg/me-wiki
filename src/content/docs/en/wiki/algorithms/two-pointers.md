@@ -15,6 +15,10 @@ While Sliding Window specializes in contiguous subsequences, Two Pointers is mor
 
 Determine pointer movement direction based on the current state, pruning unnecessary exploration to reduce complexity.
 
+```moonmaid
+array { [1, 2, 3, 4, 5, 6, 7] highlight(0, color=blue, label="left") highlight(6, color=red, label="right") }
+```
+
 ```mermaid
 flowchart TD
     A["Place two pointers at initial positions"] --> B{"Termination condition met?"}
