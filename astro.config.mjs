@@ -26,7 +26,7 @@ export default defineConfig({
 				'./src/styles/custom.css',
 			],
 			components: {
-				MarkdownContent: './src/components/MarkdownContent.astro',
+				Footer: './src/components/Footer.astro',
 			},
 			sidebar: [
 				{
