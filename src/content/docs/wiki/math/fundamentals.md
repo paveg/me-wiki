@@ -211,7 +211,7 @@ func singleNumber(nums []int) int {
 | $\leq 10$ | $O(n!)$ | 順列全探索 |
 | $\leq 20$ | $O(2^n)$ | 部分集合全探索 |
 | $\leq 500$ | $O(n^3)$ | Floyd-Warshall |
-| $\leq 5{,}000$ | $O(n^2)$ | 素朴な DP |
+| $\leq 5{,}000$ | $O(n^2)$ | ナイーブな DP |
 | $\leq 10^6$ | $O(n \log n)$ | ソート |
 | $\leq 10^8$ | $O(n)$ | 線形走査 |
 | $> 10^8$ | $O(\log n)$ or $O(1)$ | 二分探索、数学 |
