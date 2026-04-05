@@ -1,13 +1,14 @@
 import { renderMermaidSVG } from 'beautiful-mermaid';
 import { visit } from 'unist-util-visit';
+import { fromHtml } from 'hast-util-from-html';
 
 /**
  * Rehype plugin that replaces mermaid code blocks with SVGs at build time.
  * Uses beautiful-mermaid for rendering — runs in Node.js, not in the browser.
  */
 export default function rehypeBeautifulMermaid(options = {}) {
-  const light = { transparent: true, ...options.light };
-  const dark = { bg: '#0d1117', fg: '#e6edf3', transparent: true, ...options.dark };
+  const light = { bg: '#ffffff', fg: '#27272a', ...options.light };
+  const dark = { bg: '#111111', fg: '#e6edf3', ...options.dark };
 
   return (tree) => {
     visit(tree, 'element', (node, index, parent) => {
@@ -22,15 +23,17 @@ export default function rehypeBeautifulMermaid(options = {}) {
       const classes = code.properties?.className || [];
       if (!classes.includes('language-mermaid')) return;
 
-      // Extract the raw mermaid source text
       const source = extractText(code);
       if (!source.trim()) return;
 
       try {
-        const lightSvg = renderMermaidSVG(source, light);
-        const darkSvg = renderMermaidSVG(source, dark);
+        const lightSvg = injectCssVars(renderMermaidSVG(source, light), light);
+        const darkSvg = injectCssVars(renderMermaidSVG(source, dark), dark);
 
-        // Replace the <pre> node with a <div> containing both themed SVGs
+        // Parse SVG strings into hast nodes so they render as real HTML, not escaped text
+        const lightNode = fromHtml(lightSvg, { fragment: true, space: 'svg' });
+        const darkNode = fromHtml(darkSvg, { fragment: true, space: 'svg' });
+
         parent.children[index] = {
           type: 'element',
           tagName: 'div',
@@ -40,13 +43,13 @@ export default function rehypeBeautifulMermaid(options = {}) {
               type: 'element',
               tagName: 'div',
               properties: { className: ['mermaid-light'] },
-              children: [{ type: 'raw', value: lightSvg }],
+              children: lightNode.children,
             },
             {
               type: 'element',
               tagName: 'div',
               properties: { className: ['mermaid-dark'] },
-              children: [{ type: 'raw', value: darkSvg }],
+              children: darkNode.children,
             },
           ],
         };
@@ -55,6 +58,12 @@ export default function rehypeBeautifulMermaid(options = {}) {
       }
     });
   };
+}
+
+// Inject CSS variable values into the SVG's <style> block
+function injectCssVars(svg, colors) {
+  const vars = `svg { --bg:${colors.bg}; --fg:${colors.fg}; }`;
+  return svg.replace('<style>', `<style>${vars} `);
 }
 
 function extractText(node) {

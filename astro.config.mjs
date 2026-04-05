@@ -3,12 +3,13 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import rehypeRaw from 'rehype-raw';
 import rehypeBeautifulMermaid from './plugins/rehype-beautiful-mermaid.mjs';
 
 export default defineConfig({
 	markdown: {
 		remarkPlugins: [remarkMath],
-		rehypePlugins: [rehypeBeautifulMermaid, rehypeKatex],
+		rehypePlugins: [rehypeBeautifulMermaid, rehypeRaw, rehypeKatex],
 	},
 	integrations: [
 		starlight({
