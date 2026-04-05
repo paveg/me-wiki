@@ -66,34 +66,6 @@ nav.sidebar {
 	border-right: 1px solid var(--sl-color-hairline-light);
 }
 
-/* -- Expressive Code syntax highlighting fix --
- * EC injects its CSS via <link> inside .expressive-code divs,
- * but browsers strip <link> tags from inside <div>.
- * These rules ensure syntax colors are applied. */
-
-.expressive-code .ec-line span[style^='--'] {
-	color: var(--0, inherit);
-	font-style: var(--0fs, inherit);
-	font-weight: var(--0fw, inherit);
-	text-decoration: var(--0td, inherit);
-}
-
-@media (prefers-color-scheme: light) {
-	:root:not([data-theme='dark']) .expressive-code .ec-line span[style^='--'] {
-		color: var(--1, inherit);
-		font-style: var(--1fs, inherit);
-		font-weight: var(--1fw, inherit);
-		text-decoration: var(--1td, inherit);
-	}
-}
-
-:root[data-theme='light'] .expressive-code .ec-line span[style^='--'] {
-	color: var(--1, inherit);
-	font-style: var(--1fs, inherit);
-	font-weight: var(--1fw, inherit);
-	text-decoration: var(--1td, inherit);
-}
-
 /* -- Rounded corners -- */
 
 pre,

@@ -32,17 +32,22 @@ function renderDiagrams() {
     const wrapper = pre.closest('.expressive-code');
     if (!wrapper) continue;
 
-    // Expressive Code stores clean source in copy button's data-code attribute.
-    // It uses \x7f (DEL) as line separator instead of \n.
     const copyBtn = wrapper.querySelector('button[data-code]');
     const source = copyBtn
       ? copyBtn.getAttribute('data-code').replaceAll('\x7f', '\n')
       : pre.textContent || '';
 
+    // Preserve EC's <link> and <script> tags before replacing the wrapper
+    const preservedNodes = wrapper.querySelectorAll('link, script[src]');
     const container = document.createElement('div');
     container.classList.add('mermaid');
     container.textContent = source;
     wrapper.replaceWith(container);
+
+    // Re-insert preserved nodes so EC CSS stays loaded
+    for (const node of preservedNodes) {
+      container.parentNode.insertBefore(node, container);
+    }
   }
   mermaid.run();
 }
