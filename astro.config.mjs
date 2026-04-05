@@ -5,11 +5,10 @@ import { defineConfig } from "astro/config";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 import remarkMoonmaid from "moonmaid/remark-plugin";
+import { resolve } from "node:path";
 
-const moonmaidWasmPath = new URL(
-	"../moonmaid/_build/wasm-gc/release/build/lib/lib.wasm",
-	import.meta.url,
-).href;
+const moonmaidWasmPath =
+	"file://" + resolve(process.cwd(), "src/moonmaid.wasm");
 
 export default defineConfig({
 	markdown: {
