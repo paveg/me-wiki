@@ -25,6 +25,9 @@ export default defineConfig({
 				'katex/dist/katex.min.css',
 				'./src/styles/custom.css',
 			],
+			components: {
+				MarkdownContent: './src/components/MarkdownContent.astro',
+			},
 			sidebar: [
 				{
 					label: 'Wiki',
