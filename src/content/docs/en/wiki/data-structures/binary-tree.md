@@ -48,6 +48,8 @@ flowchart TD
 | Postorder | Left, Right, Root | 1, 3, 2, 5, 7, 6, 4 | Subtree deletion / aggregation |
 | Level-order | BFS | 4, 2, 6, 1, 3, 5, 7 | See [BFS](/en/wiki/algorithms/bfs/) |
 
+> Preorder, Inorder, and Postorder are all forms of [DFS](/en/wiki/algorithms/dfs/) — they differ only in when the node is processed. Level-order is the only [BFS](/en/wiki/algorithms/bfs/) traversal.
+
 ## Template
 
 ### Recursive (Inorder)

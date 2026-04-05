@@ -48,6 +48,8 @@ flowchart TD
 | Postorder | 左 → 右 → 根 | 1, 3, 2, 5, 7, 6, 4 | 部分木の削除・集約 |
 | Level-order | 幅優先 (BFS) | 4, 2, 6, 1, 3, 5, 7 | [BFS](/wiki/algorithms/bfs/) を参照 |
 
+> Preorder / Inorder / Postorder は全て [DFS](/wiki/algorithms/dfs/) の一種で、ノードを処理するタイミングが異なるだけ。Level-order だけが [BFS](/wiki/algorithms/bfs/)。
+
 ## テンプレート
 
 ### 再帰（Inorder）
