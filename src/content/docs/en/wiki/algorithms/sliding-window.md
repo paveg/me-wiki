@@ -145,6 +145,8 @@ func minSwaps(data []int) int {
     if ones <= 1 {
         return 0
     }
+
+    // Count zeros in the initial window [0..ones-1]
     zeros := 0
     for i := 0; i < ones; i++ {
         if data[i] == 0 {
@@ -153,6 +155,7 @@ func minSwaps(data []int) int {
     }
     minZeros := zeros
 
+    // Slide the window: add right end, remove left end
     for i := ones; i < len(data); i++ {
         if data[i] == 0 {
             zeros++
@@ -172,7 +175,7 @@ func minSwaps(data []int) int {
 
 An extension of 1151. The array is **circular**.
 
-**Key insight:** Circular arrays can be handled like linear arrays by wrapping indices with `% n`. The window concept is the same.
+**Key insight:** Circular arrays can be handled like linear arrays by wrapping indices with `% n`. The loop structure mirrors 1151 — "add right end, remove left end" — with `% n` for circular indexing.
 
 ```go
 func minSwaps(nums []int) int {
@@ -180,11 +183,13 @@ func minSwaps(nums []int) int {
     for _, v := range nums {
         ones += v
     }
-    if ones == 0 {
+    if ones <= 1 {
         return 0
     }
 
     n := len(nums)
+
+    // Count zeros in the initial window [0..ones-1]
     zeros := 0
     for i := 0; i < ones; i++ {
         if nums[i] == 0 {
@@ -193,11 +198,12 @@ func minSwaps(nums []int) int {
     }
     minZeros := zeros
 
-    for i := 0; i < n; i++ {
-        if nums[(i+ones)%n] == 0 {
+    // Slide the window with circular indexing
+    for i := ones; i < ones+n; i++ {
+        if nums[i%n] == 0 {
             zeros++
         }
-        if nums[i] == 0 {
+        if nums[(i-ones)%n] == 0 {
             zeros--
         }
         if zeros < minZeros {
@@ -207,6 +213,8 @@ func minSwaps(nums []int) int {
     return minZeros
 }
 ```
+
+**Difference from 1151:** The loop runs `for i := ones; i < ones+n` with `% n` wrapping. The structure is identical — "add right, remove left".
 
 ## How to Recognize
 

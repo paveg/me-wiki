@@ -14,6 +14,7 @@ sidebar:
 - [x] Topological Sort
 - [x] Monotonic Stack
 - [x] Merge Intervals
+- [x] HashMap Pattern (frequency counting, lookup, grouping)
 - [ ] Bit Manipulation
 - [ ] Sorting (Quick Sort, Merge Sort, Counting Sort)
 

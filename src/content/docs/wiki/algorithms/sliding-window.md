@@ -147,6 +147,8 @@ func minSwaps(data []int) int {
     if ones <= 1 {
         return 0
     }
+
+    // Count zeros in the initial window [0..ones-1]
     zeros := 0
     for i := 0; i < ones; i++ {
         if data[i] == 0 {
@@ -155,6 +157,7 @@ func minSwaps(data []int) int {
     }
     minZeros := zeros
 
+    // Slide the window: add right end, remove left end
     for i := ones; i < len(data); i++ {
         if data[i] == 0 {
             zeros++
@@ -174,7 +177,7 @@ func minSwaps(data []int) int {
 
 1151 の拡張。配列が**円形**になる。
 
-**着眼点:** 円形配列はインデックスを `% n` でラップすることで線形配列と同じように扱える。ウィンドウの考え方は同じ。
+**着眼点:** 円形配列はインデックスを `% n` でラップすることで線形配列と同じように扱える。ウィンドウの考え方は 1151 と同じだが、スライドのループ構造を統一している。
 
 ```go
 func minSwaps(nums []int) int {
@@ -182,11 +185,13 @@ func minSwaps(nums []int) int {
     for _, v := range nums {
         ones += v
     }
-    if ones == 0 {
+    if ones <= 1 {
         return 0
     }
 
     n := len(nums)
+
+    // Count zeros in the initial window [0..ones-1]
     zeros := 0
     for i := 0; i < ones; i++ {
         if nums[i] == 0 {
@@ -195,11 +200,12 @@ func minSwaps(nums []int) int {
     }
     minZeros := zeros
 
-    for i := 0; i < n; i++ {
-        if nums[(i+ones)%n] == 0 {
+    // Slide the window with circular indexing
+    for i := ones; i < ones+n; i++ {
+        if nums[i%n] == 0 {
             zeros++
         }
-        if nums[i] == 0 {
+        if nums[(i-ones)%n] == 0 {
             zeros--
         }
         if zeros < minZeros {
@@ -209,6 +215,8 @@ func minSwaps(nums []int) int {
     return minZeros
 }
 ```
+
+**1151 との違い:** ループが `for i := ones; i < ones+n` になり `% n` で循環する。構造は 1151 と同じ「右端追加→左端削除」のパターン。
 
 ## 見極めるためのシグナル
 
