@@ -26,17 +26,8 @@ array { [2, 1, 5, 6, 2, 3] }
 
 Each element is **pushed at most once and popped at most once**, yielding $O(n)$ total operations.
 
-```mermaid
-flowchart TD
-    A["Iterate over each element"] --> B{"Stack empty?"}
-    B -- Yes --> E["Push element onto stack"]
-    B -- No --> C{"Current element > stack top?"}
-    C -- Yes --> D["Pop top and record answer"]
-    D --> B
-    C -- No --> E
-    E --> F{"More elements?"}
-    F -- Yes --> A
-    F -- No --> G["Remaining stack elements have no answer"]
+```moonmaid
+flowchart TD { A["Iterate over each element"] -> B{"Stack empty?"} B -> |"Yes"| E["Push element onto stack"] B -> |"No"| C{"Current element > stack top?"} C -> |"Yes"| D["Pop top and record answer"] D -> B C -> |"No"| E E -> F{"More elements?"} F -> |"Yes"| A F -> |"No"| G["Remaining stack elements have no answer"] }
 ```
 
 > The above shows the flow for a monotonic decreasing stack (Next Greater Element).

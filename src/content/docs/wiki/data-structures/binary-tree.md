@@ -35,14 +35,8 @@ type TreeNode struct {
 
 以下のサンプル木で各走査順を確認する。
 
-```mermaid
-flowchart TD
-    A((4)) --> B((2))
-    A --> C((6))
-    B --> D((1))
-    B --> E((3))
-    C --> F((5))
-    C --> G((7))
+```moonmaid
+flowchart TD { A("4") -> B("2") A -> C("6") B -> D("1") B -> E("3") C -> F("5") C -> G("7") }
 ```
 
 | 走査 | 順序 | 結果 | 用途 |

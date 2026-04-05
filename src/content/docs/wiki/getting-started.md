@@ -11,12 +11,8 @@ sidebar:
 
 ## 学習サイクル
 
-```mermaid
-graph LR
-    A["トピックを見つける"] --> B["調べる"]
-    B --> C["Wiki に書く"]
-    C --> D["図解で整理"]
-    D --> A
+```moonmaid
+flowchart LR { A["トピックを見つける"] -> B["調べる"] B -> C["Wiki に書く"] C -> D["図解で整理"] D -> A }
 ```
 
 ## moonmaid テスト

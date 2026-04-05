@@ -35,14 +35,8 @@ type TreeNode struct {
 
 Consider the following sample tree:
 
-```mermaid
-flowchart TD
-    A((4)) --> B((2))
-    A --> C((6))
-    B --> D((1))
-    B --> E((3))
-    C --> F((5))
-    C --> G((7))
+```moonmaid
+flowchart TD { A("4") -> B("2") A -> C("6") B -> D("1") B -> E("3") C -> F("5") C -> G("7") }
 ```
 
 | Traversal | Order | Result | Use case |

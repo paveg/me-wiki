@@ -18,14 +18,8 @@ In grid problems, it appears frequently as the **Flood Fill** pattern — counti
 3. When all neighbors are visited, backtrack to the previous node
 4. Repeat until all nodes are visited
 
-```mermaid
-flowchart TD
-    A["Select starting node"] --> B["Mark as visited"]
-    B --> C{"Unvisited neighbor exists?"}
-    C -->|Yes| D["Move to neighbor"]
-    D --> B
-    C -->|No| E["Backtrack"]
-    E --> C
+```moonmaid
+flowchart TD { A["Select starting node"] -> B["Mark as visited"] B -> C{"Unvisited neighbor exists?"} C -> |"Yes"| D["Move to neighbor"] D -> B C -> |"No"| E["Backtrack"] E -> C }
 ```
 
 ## Recursion vs Stack
@@ -109,14 +103,8 @@ Count the number of islands in a grid of `'1'` (land) and `'0'` (water). Adjacen
 
 **Key insight:** Scan the grid. Each time we find a `'1'`, increment the count and use DFS to mark all connected `'1'`s as `'0'` (acting as a visited marker).
 
-```mermaid
-flowchart TD
-    A["Scan entire grid"] --> B{"grid[i][j] == '1' ?"}
-    B -->|Yes| C["count++ → Start DFS"]
-    B -->|No| A
-    C --> D["Mark current cell as '0'"]
-    D --> E["Recurse on 4 neighbors"]
-    E --> A
+```moonmaid
+flowchart TD { A["Scan entire grid"] -> B{"grid[i][j] == '1' ?"} B -> |"Yes"| C["count++: Start DFS"] B -> |"No"| A C -> D["Mark current cell as '0'"] D -> E["Recurse on 4 neighbors"] E -> A }
 ```
 
 ```go

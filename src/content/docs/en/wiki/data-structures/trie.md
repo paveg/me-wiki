@@ -22,14 +22,8 @@ A Trie (prefix tree) is a tree structure for efficiently storing and searching a
 
 A Trie is a tree where each node maps characters to child nodes. The root is empty, and each edge corresponds to one character.
 
-```mermaid
-flowchart TD
-    ROOT["(root)"] --> A["a"]
-    ROOT --> T["t"]
-    A --> AP["p"] --> APP["p"] --> APPL["l"] --> APPLE["e ✓"]
-    AP --> APT["t ✓"]
-    T --> TO["o ✓"]
-    TO --> TOP["p ✓"]
+```moonmaid
+flowchart TD { ROOT["(root)"] -> A["a"] ROOT -> T["t"] A -> AP["p"] AP -> APP["p"] APP -> APPL["l"] APPL -> APPLE["e (end)"] AP -> APT["t (end)"] T -> TO["o (end)"] TO -> TOP["p (end)"] }
 ```
 
 The diagram above stores `"apple"`, `"apt"`, `"to"`, and `"top"`. The `✓` marks the `isEnd` flag indicating a complete word.

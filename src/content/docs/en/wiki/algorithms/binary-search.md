@@ -24,18 +24,8 @@ Since the search range halves at each step, the overall complexity is $O(\log n)
 array { [1, 3, 5, 7, 9, 11, 13] highlight(3, color=red, label="mid") highlight(0, color=blue, label="left") highlight(6, color=blue, label="right") }
 ```
 
-```mermaid
-flowchart TD
-    A["left = 0, right = n - 1"] --> B["mid = left + (right - left) / 2"]
-    B --> C{"target == arr[mid] ?"}
-    C -->|Yes| D["return mid"]
-    C -->|No| E{"target < arr[mid] ?"}
-    E -->|Yes| F["right = mid - 1"]
-    E -->|No| G["left = mid + 1"]
-    F --> H{"left <= right ?"}
-    G --> H
-    H -->|Yes| B
-    H -->|No| I["return -1 (not found)"]
+```moonmaid
+flowchart TD { A["left = 0, right = n - 1"] -> B["mid = left + (right - left) / 2"] B -> C{"target == arr[mid] ?"} C -> |"Yes"| D["return mid"] C -> |"No"| E{"target < arr[mid] ?"} E -> |"Yes"| F["right = mid - 1"] E -> |"No"| G["left = mid + 1"] F -> H{"left <= right ?"} G -> H H -> |"Yes"| B H -> |"No"| I["return -1 (not found)"] }
 ```
 
 ## Template

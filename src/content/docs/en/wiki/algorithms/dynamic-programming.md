@@ -23,18 +23,8 @@ There are two DP approaches:
 
 Ask: "Can I express this problem in terms of answers to smaller versions of itself?" If yes, DP applies.
 
-```mermaid
-flowchart TD
-    A["Receive problem"] --> B{"Has optimal substructure?"}
-    B -->|No| Z["DP does not apply"]
-    B -->|Yes| C{"Has overlapping subproblems?"}
-    C -->|No| D["Divide and conquer is sufficient"]
-    C -->|Yes| E["Apply DP"]
-    E --> F{"Simple state dependencies?"}
-    F -->|Yes| G["Implement bottom-up"]
-    F -->|No| H["Implement top-down with memoization"]
-    G --> I["Consider space optimization"]
-    H --> I
+```moonmaid
+flowchart TD { A["Receive problem"] -> B{"Has optimal substructure?"} B -> |"No"| Z["DP does not apply"] B -> |"Yes"| C{"Has overlapping subproblems?"} C -> |"No"| D["Divide and conquer is sufficient"] C -> |"Yes"| E["Apply DP"] E -> F{"Simple state dependencies?"} F -> |"Yes"| G["Implement bottom-up"] F -> |"No"| H["Implement top-down with memoization"] G -> I["Consider space optimization"] H -> I }
 ```
 
 ## Top-down vs Bottom-up

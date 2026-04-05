@@ -25,14 +25,8 @@ Linked List（連結リスト）は、各ノードがデータと次のノード
 
 連結リストの問題はポインタ操作が核。ノード間のリンクを付け替えることで、追加メモリなしに構造を変更できる。
 
-```mermaid
-flowchart LR
-    subgraph Singly["単方向連結リスト"]
-        A1["1"] --> A2["2"] --> A3["3"] --> A4["nil"]
-    end
-    subgraph Doubly["双方向連結リスト"]
-        B1["nil"] <--> B2["1"] <--> B3["2"] <--> B4["3"] <--> B5["nil"]
-    end
+```moonmaid
+flowchart LR { A1["Singly: 1"] -> A2["2"] A2 -> A3["3"] A3 -> A4["nil"] B1["Doubly: nil"] -> B2["1"] B2 -> B1 B2 -> B3["2"] B3 -> B2 B3 -> B4["3"] B4 -> B3 B4 -> B5["nil"] B5 -> B4 }
 ```
 
 面接で頻出するパターンは**反転**、**Fast & Slow ポインタ**、**マージ**、**ダミーヘッド**の4つ。
@@ -81,11 +75,8 @@ func reverseList(head *ListNode) *ListNode {
 
 **サイクル検出（Floyd's Algorithm）:**
 
-```mermaid
-flowchart LR
-    N1["1"] --> N2["2"] --> N3["3"] --> N4["4"] --> N5["5"]
-    N5 --> N3
-    style N3 fill:#f9f,stroke:#333
+```moonmaid
+flowchart LR { N1["1"] -> N2["2"] N2 -> N3["3"] N3 -> N4["4"] N4 -> N5["5"] N5 -> N3 }
 ```
 
 サイクルがあれば fast と slow は必ず出会う。サイクルがなければ fast が `nil` に到達する。

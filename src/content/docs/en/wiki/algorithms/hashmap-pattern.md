@@ -17,16 +17,8 @@ While hash maps are used as auxiliary structures in nearly every algorithm topic
 2. Reference accumulated information in $O(1)$ to evaluate conditions
 3. This often reduces a naive $O(n^2)$ double loop to $O(n)$
 
-```mermaid
-flowchart TD
-    A["Scan array left to right"] --> B["Look up current element info in HashMap"]
-    B --> C{"Condition met?"}
-    C -->|Yes| D["Record result"]
-    C -->|No| E["Update HashMap"]
-    D --> E
-    E --> F{"More elements?"}
-    F -->|Yes| A
-    F -->|No| G["Return result"]
+```moonmaid
+flowchart TD { A["Scan array left to right"] -> B["Look up current element info in HashMap"] B -> C{"Condition met?"} C -> |"Yes"| D["Record result"] C -> |"No"| E["Update HashMap"] D -> E E -> F{"More elements?"} F -> |"Yes"| A F -> |"No"| G["Return result"] }
 ```
 
 ## Patterns
@@ -163,15 +155,8 @@ Group an array of strings by their anagram equivalence classes.
 
 **Key Insight:** Anagrams share the same character frequency. Sorting each string produces a canonical key for grouping.
 
-```mermaid
-flowchart TD
-    A["Input: eat, tea, tan, ate, nat, bat"] --> B["Sort each string"]
-    B --> C["aet → eat, tea, ate"]
-    B --> D["ant → tan, nat"]
-    B --> E["abt → bat"]
-    C --> F["Return grouped results"]
-    D --> F
-    E --> F
+```moonmaid
+flowchart TD { A["Input: eat, tea, tan, ate, nat, bat"] -> B["Sort each string"] B -> C["aet: eat, tea, ate"] B -> D["ant: tan, nat"] B -> E["abt: bat"] C -> F["Return grouped results"] D -> F E -> F }
 ```
 
 ```go
@@ -221,16 +206,8 @@ Count the number of contiguous subarrays whose sum equals exactly `k`.
 
 **Key Insight:** Using prefix sums, a subarray sum equals `prefixSum[j] - prefixSum[i]`. Track "how many times `prefixSum[j] - k` has appeared before" in a HashMap.
 
-```mermaid
-flowchart TD
-    A["prefix = 0, count = 0"] --> B["HashMap: {0: 1}"]
-    B --> C["Scan array"]
-    C --> D["prefix += nums[i]"]
-    D --> E{"prefix - k in HashMap?"}
-    E -->|Yes| F["count += HashMap[prefix - k]"]
-    E -->|No| G["HashMap[prefix]++"]
-    F --> G
-    G --> C
+```moonmaid
+flowchart TD { A["prefix = 0, count = 0"] -> B["HashMap: 0: 1"] B -> C["Scan array"] C -> D["prefix += nums[i]"] D -> E{"prefix - k in HashMap?"} E -> |"Yes"| F["count += HashMap[prefix - k]"] E -> |"No"| G["HashMap[prefix]++"] F -> G G -> C }
 ```
 
 ```go

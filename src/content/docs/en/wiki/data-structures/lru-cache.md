@@ -15,23 +15,8 @@ In interviews it typically appears as "design a cache where Get and Put both run
 
 The HashMap provides $O(1)$ key-to-node lookup, while the doubly linked list maintains access order. The head of the list represents the most recently used entry; the tail represents the least recently used.
 
-```mermaid
-flowchart LR
-    HM["HashMap\nkey → Node*"]
-    H["Head\n(sentinel)"]
-    N1["Node A\nkey=1, val=10"]
-    N2["Node B\nkey=2, val=20"]
-    N3["Node C\nkey=3, val=30"]
-    T["Tail\n(sentinel)"]
-
-    H <--> N1
-    N1 <--> N2
-    N2 <--> N3
-    N3 <--> T
-
-    HM -.-> N1
-    HM -.-> N2
-    HM -.-> N3
+```moonmaid
+flowchart LR { HM["HashMap key->Node*"] -> N1 [style=dashed] HM -> N2 [style=dashed] HM -> N3 [style=dashed] H["Head (sentinel)"] -> N1["Node A key=1, val=10"] N1 -> N2["Node B key=2, val=20"] N2 -> N3["Node C key=3, val=30"] N3 -> T["Tail (sentinel)"] }
 ```
 
 **Head side = most recent, Tail side = least recent.** Head and Tail are sentinel nodes that hold no data[^1].
@@ -40,26 +25,8 @@ flowchart LR
 
 ### Get / Put Operations
 
-```mermaid
-flowchart TD
-    subgraph Get
-        G1["Get(key)"] --> G2{"key in cache?"}
-        G2 -->|Yes| G3["Remove node from list"]
-        G3 --> G4["insertHead (mark as most recent)"]
-        G4 --> G5["Return val"]
-        G2 -->|No| G6["Return -1"]
-    end
-
-    subgraph Put
-        P1["Put(key, val)"] --> P2{"key in cache?"}
-        P2 -->|Yes| P3["Update val"]
-        P3 --> P4["remove → insertHead"]
-        P2 -->|No| P5["Create new Node"]
-        P5 --> P6["Add to cache + insertHead"]
-        P6 --> P7{"Over capacity?"}
-        P7 -->|Yes| P8["Remove tail.prev\nDelete from cache"]
-        P7 -->|No| P9["Done"]
-    end
+```moonmaid
+flowchart TD { G1["Get(key)"] -> G2{"key in cache?"} G2 -> |"Yes"| G3["Remove node from list"] G3 -> G4["insertHead (mark as most recent)"] G4 -> G5["Return val"] G2 -> |"No"| G6["Return -1"] P1["Put(key, val)"] -> P2{"key in cache?"} P2 -> |"Yes"| P3["Update val"] P3 -> P4["remove then insertHead"] P2 -> |"No"| P5["Create new Node"] P5 -> P6["Add to cache + insertHead"] P6 -> P7{"Over capacity?"} P7 -> |"Yes"| P8["Remove tail.prev, Delete from cache"] P7 -> |"No"| P9["Done"] }
 ```
 
 ## Complexity

@@ -18,15 +18,8 @@ It is the only basic search algorithm that **guarantees shortest paths** in unwe
 3. Enqueue all unvisited neighbors, marking them as visited
 4. Repeat until the queue is empty
 
-```mermaid
-flowchart TD
-    A["Enqueue starting node"] --> B["Dequeue front element"]
-    B --> C{"Unvisited neighbor exists?"}
-    C -->|Yes| D["Enqueue + mark as visited"]
-    D --> C
-    C -->|No| E{"Queue empty?"}
-    E -->|No| B
-    E -->|Yes| F["Search complete"]
+```moonmaid
+flowchart TD { A["Enqueue starting node"] -> B["Dequeue front element"] B -> C{"Unvisited neighbor exists?"} C -> |"Yes"| D["Enqueue + mark as visited"] D -> C C -> |"No"| E{"Queue empty?"} E -> |"No"| B E -> |"Yes"| F["Search complete"] }
 ```
 
 ## Template (Grid)
