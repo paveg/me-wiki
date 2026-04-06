@@ -141,6 +141,8 @@ func dfsTopologicalSort(numNodes int, edges [][]int) ([]int, bool) {
 
 ## Complexity
 
+$V$ = number of vertices, $E$ = number of edges
+
 | | Time | Space |
 |---|---|---|
 | Kahn's (BFS) | $O(V + E)$ | $O(V + E)$ |

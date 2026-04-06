@@ -35,6 +35,8 @@ flowchart TD { A["開始ノードを選択"] -> B["訪問済みにする"] B -> 
 
 **再帰テンプレート（グリッド）:**
 
+`rows` = 行数、`cols` = 列数、`visited` = 訪問済みを表す値。
+
 ```go
 var dfs func(i, j int)
 dfs = func(i, j int) {
@@ -50,6 +52,8 @@ dfs = func(i, j int) {
 ```
 
 **スタックテンプレート（グリッド）:**
+
+`startI`, `startJ` = 探索開始位置。`rows`, `cols`, `visited` は再帰版と同じ。
 
 ```go
 stack := [][]int{{startI, startJ}}

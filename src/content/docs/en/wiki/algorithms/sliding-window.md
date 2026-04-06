@@ -71,6 +71,8 @@ for right := 0; right < len(arr); right++ {
 
 ## Complexity
 
+$k$ = window size, $n$ = input size
+
 | | Time | Space |
 |---|---|---|
 | Fixed-size | $O(n)$ | $O(1)$ to $O(k)$ |

@@ -141,6 +141,8 @@ func dfsTopologicalSort(numNodes int, edges [][]int) ([]int, bool) {
 
 ## 計算量
 
+$V$ = 頂点数、$E$ = 辺数
+
 | | 時間 | 空間 |
 |---|---|---|
 | Kahn's (BFS) | $O(V + E)$ | $O(V + E)$ |

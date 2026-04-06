@@ -35,6 +35,8 @@ flowchart TD { A["Select starting node"] -> B["Mark as visited"] B -> C{"Unvisit
 
 **Recursion template (grid):**
 
+`rows` = number of rows, `cols` = number of columns, `visited` = value representing a visited cell.
+
 ```go
 var dfs func(i, j int)
 dfs = func(i, j int) {
@@ -50,6 +52,8 @@ dfs = func(i, j int) {
 ```
 
 **Stack template (grid):**
+
+`startI`, `startJ` = starting position. `rows`, `cols`, `visited` same as above.
 
 ```go
 stack := [][]int{{startI, startJ}}

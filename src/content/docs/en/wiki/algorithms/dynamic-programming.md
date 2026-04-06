@@ -136,6 +136,8 @@ DP complexity is determined by:
 
 $$\text{Complexity} = \text{Number of states} \times \text{Transition cost per state}$$
 
+$n$ = input size (array length, target amount, etc.), $m$ = second dimension (coin types, grid columns, string length, etc.)
+
 | Pattern | States | Transition | Time | Space (optimized) |
 |---|---|---|---|---|
 | Linear DP | $O(n)$ | $O(1)$ | $O(n)$ | $O(1)$ |
