@@ -23,18 +23,8 @@ There are two DP approaches:
 
 Ask: "Can I express this problem in terms of answers to smaller versions of itself?" If yes, DP applies.
 
-```mermaid
-flowchart TD
-    A["Receive problem"] --> B{"Has optimal substructure?"}
-    B -->|No| Z["DP does not apply"]
-    B -->|Yes| C{"Has overlapping subproblems?"}
-    C -->|No| D["Divide and conquer is sufficient"]
-    C -->|Yes| E["Apply DP"]
-    E --> F{"Simple state dependencies?"}
-    F -->|Yes| G["Implement bottom-up"]
-    F -->|No| H["Implement top-down with memoization"]
-    G --> I["Consider space optimization"]
-    H --> I
+```moonmaid
+flowchart TD { A["Receive problem"] -> B{"Has optimal substructure?"} B -> |"No"| Z["DP does not apply"] B -> |"Yes"| C{"Has overlapping subproblems?"} C -> |"No"| D["Divide and conquer is sufficient"] C -> |"Yes"| E["Apply DP"] E -> F{"Simple state dependencies?"} F -> |"Yes"| G["Implement bottom-up"] F -> |"No"| H["Implement top-down with memoization"] G -> I["Consider space optimization"] H -> I }
 ```
 
 ## Top-down vs Bottom-up
@@ -145,6 +135,8 @@ func solve(nums []int) int {
 DP complexity is determined by:
 
 $$\text{Complexity} = \text{Number of states} \times \text{Transition cost per state}$$
+
+$n$ = input size (array length, target amount, etc.), $m$ = second dimension (coin types, grid columns, string length, etc.)
 
 | Pattern | States | Transition | Time | Space (optimized) |
 |---|---|---|---|---|

@@ -4,9 +4,18 @@ import starlight from "@astrojs/starlight";
 import { defineConfig } from "astro/config";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
+import remarkMoonmaid from "moonmaid/remark-plugin";
+import { resolve } from "node:path";
+
+const moonmaidWasmPath =
+	"file://" + resolve(process.cwd(), "src/moonmaid.wasm");
+
 export default defineConfig({
 	markdown: {
-		remarkPlugins: [remarkMath],
+		remarkPlugins: [
+			remarkMath,
+			[remarkMoonmaid, { wasmPath: moonmaidWasmPath }],
+		],
 		rehypePlugins: [rehypeKatex],
 	},
 	integrations: [
@@ -28,9 +37,6 @@ export default defineConfig({
 			pagination: false,
 			editLink: undefined,
 			credits: false,
-			components: {
-				Footer: "./src/components/Footer.astro",
-			},
 			customCss: ["katex/dist/katex.min.css", "./src/styles/custom.css"],
 			sidebar: [
 				{

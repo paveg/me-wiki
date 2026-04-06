@@ -21,20 +21,8 @@ Each set is represented as a **tree**, with the tree's root serving as the set's
 - **Find**: Follow parent pointers up to the root
 - **Union**: Find the roots of two elements, make one root a child of the other
 
-```mermaid
-flowchart TD
-    subgraph Before["Before Union"]
-        A1["1 (root)"] --> B1["2"]
-        A1 --> C1["3"]
-        D1["4 (root)"] --> E1["5"]
-    end
-    subgraph After["After Union(3, 5)"]
-        A2["1 (root)"] --> B2["2"]
-        A2 --> C2["3"]
-        A2 --> D2["4"]
-        D2 --> E2["5"]
-    end
-    Before -.-> After
+```moonmaid
+flowchart TD { A1["Before: 1 (root)"] -> B1["2"] A1 -> C1["3"] D1["Before: 4 (root)"] -> E1["5"] A2["After Union(3,5): 1 (root)"] -> B2["2"] A2 -> C2["3"] A2 -> D2["4"] D2 -> E2["5"] }
 ```
 
 ## Optimizations

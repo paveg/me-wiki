@@ -20,12 +20,8 @@ It is one of the most frequently asked patterns in coding interviews.
 
 Since each element enters and leaves the window at most once, the overall complexity is $O(n)$.
 
-```mermaid
-graph LR
-    a1["1"] --- a2["3"] --- a3["2"] --- a4["5"] --- a5["1"] --- a6["4"]
-    style a2 fill:#4a9ebb,color:#fff,stroke:#357a94,stroke-width:2px
-    style a3 fill:#4a9ebb,color:#fff,stroke:#357a94,stroke-width:2px
-    style a4 fill:#4a9ebb,color:#fff,stroke:#357a94,stroke-width:2px
+```moonmaid
+array { [1, 3, 2, 5, 1, 4] highlight(1..3, color=blue, label="window") }
 ```
 
 > Blue nodes (3, 2, 5) represent the current window. `left = 1`, `right = 3`.
@@ -75,6 +71,8 @@ for right := 0; right < len(arr); right++ {
 
 ## Complexity
 
+$k$ = window size, $n$ = input size
+
 | | Time | Space |
 |---|---|---|
 | Fixed-size | $O(n)$ | $O(1)$ to $O(k)$ |
@@ -90,15 +88,8 @@ Find all starting indices of anagrams of string `p` within string `s`.
 
 **Key insight:** Anagram = same character frequency. Window size is fixed at `len(p)`.
 
-```mermaid
-flowchart TD
-    A["Compute pCount = character frequency of p"] --> B["Compute sCount = frequency of first len(p) chars of s"]
-    B --> C{"sCount == pCount ?"}
-    C -->|Yes| D["Add index to result"]
-    C -->|No| E["Slide window right by 1"]
-    D --> E
-    E --> F["Add right char, remove left char"]
-    F --> C
+```moonmaid
+flowchart TD { A["Compute pCount = character frequency of p"] -> B["Compute sCount = frequency of first len(p) chars of s"] B -> C{"sCount == pCount ?"} C -> |"Yes"| D["Add index to result"] C -> |"No"| E["Slide window right by 1"] D -> E E -> F["Add right char, remove left char"] F -> C }
 ```
 
 ```go

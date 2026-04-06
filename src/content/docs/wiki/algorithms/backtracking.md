@@ -17,17 +17,8 @@ sidebar:
 2. **探索（Explore）**: その選択のもとで再帰的に次の選択へ進む
 3. **取消（Unchoose）**: 再帰から戻ったら選択を元に戻す
 
-```mermaid
-flowchart TD
-    A["ゴールに到達？"] -->|Yes| B["結果を記録"]
-    A -->|No| C["候補から一つ選ぶ（Choose）"]
-    C --> D{"有効な選択？"}
-    D -->|Yes| E["選択を確定"]
-    E --> F["再帰的に探索（Explore）"]
-    F --> G["選択を取消（Unchoose）"]
-    G --> C
-    D -->|No| H["この候補をスキップ（枝刈り）"]
-    H --> C
+```moonmaid
+flowchart TD { A["ゴールに到達？"] -> |"Yes"| B["結果を記録"] A -> |"No"| C["候補から一つ選ぶ（Choose）"] C -> D{"有効な選択？"} D -> |"Yes"| E["選択を確定"] E -> F["再帰的に探索（Explore）"] F -> G["選択を取消（Unchoose）"] G -> C D -> |"No"| H["この候補をスキップ（枝刈り）"] H -> C }
 ```
 
 ## テンプレート

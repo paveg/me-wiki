@@ -13,6 +13,10 @@ A naive approach that linearly scans rightward for each element costs $O(n^2)$. 
 
 It is one of the most frequently asked patterns in coding interviews and contests.
 
+```moonmaid
+array { [2, 1, 5, 6, 2, 3] }
+```
+
 ## Core Idea
 
 1. Iterate through the array from left to right, pushing each element onto the stack
@@ -22,17 +26,8 @@ It is one of the most frequently asked patterns in coding interviews and contest
 
 Each element is **pushed at most once and popped at most once**, yielding $O(n)$ total operations.
 
-```mermaid
-flowchart TD
-    A["Iterate over each element"] --> B{"Stack empty?"}
-    B -- Yes --> E["Push element onto stack"]
-    B -- No --> C{"Current element > stack top?"}
-    C -- Yes --> D["Pop top and record answer"]
-    D --> B
-    C -- No --> E
-    E --> F{"More elements?"}
-    F -- Yes --> A
-    F -- No --> G["Remaining stack elements have no answer"]
+```moonmaid
+flowchart TD { A["Iterate over each element"] -> B{"Stack empty?"} B -> |"Yes"| E["Push element onto stack"] B -> |"No"| C{"Current element > stack top?"} C -> |"Yes"| D["Pop top and record answer"] D -> B C -> |"No"| E E -> F{"More elements?"} F -> |"Yes"| A F -> |"No"| G["Remaining stack elements have no answer"] }
 ```
 
 > The above shows the flow for a monotonic decreasing stack (Next Greater Element).

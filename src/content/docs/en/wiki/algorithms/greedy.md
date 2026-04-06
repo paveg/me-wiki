@@ -15,17 +15,8 @@ In interviews, many candidates know DP but tend to solve greedy-eligible problem
 
 At each step, choose the **best option available right now** and never reconsider past decisions. Decisions are made based solely on current information, without considering future consequences.
 
-```mermaid
-flowchart TD
-    A["Receive problem"] --> B["Sort/organize candidates by evaluation criteria"]
-    B --> C{"Candidates remaining?"}
-    C -->|Yes| D["Select locally optimal candidate"]
-    D --> E{"Satisfies constraints?"}
-    E -->|Yes| F["Add to solution"]
-    E -->|No| G["Skip"]
-    F --> C
-    G --> C
-    C -->|No| H["Return solution"]
+```moonmaid
+flowchart TD { A["Receive problem"] -> B["Sort/organize candidates by evaluation criteria"] B -> C{"Candidates remaining?"} C -> |"Yes"| D["Select locally optimal candidate"] D -> E{"Satisfies constraints?"} E -> |"Yes"| F["Add to solution"] E -> |"No"| G["Skip"] F -> C G -> C C -> |"No"| H["Return solution"] }
 ```
 
 ## When Greedy Works
@@ -74,16 +65,8 @@ Balloons are represented as intervals `[start, end]` on the x-axis. Find the min
 
 **Key insight:** Sort by end position and track the current arrow position. If the next balloon's start is beyond the current arrow, a new arrow is needed.
 
-```mermaid
-flowchart TD
-    A["Sort intervals by end position"] --> B["arrows = 1, xEnd = points[0][1]"]
-    B --> C{"Next interval exists?"}
-    C -->|Yes| D{"points[i][0] > xEnd ?"}
-    D -->|Yes| E["arrows++, xEnd = points[i][1]"]
-    D -->|No| F["Already covered by current arrow"]
-    E --> C
-    F --> C
-    C -->|No| G["Return arrows"]
+```moonmaid
+flowchart TD { A["Sort intervals by end position"] -> B["arrows = 1, xEnd = points[0][1]"] B -> C{"Next interval exists?"} C -> |"Yes"| D{"points[i][0] > xEnd ?"} D -> |"Yes"| E["arrows++, xEnd = points[i][1]"] D -> |"No"| F["Already covered by current arrow"] E -> C F -> C C -> |"No"| G["Return arrows"] }
 ```
 
 ```go

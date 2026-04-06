@@ -21,20 +21,8 @@ Union-Find（素集合データ構造、DSU とも呼ばれる）は、要素の
 - **Find**: 親ポインタを根まで辿る
 - **Union**: 2 つの根を見つけ、片方をもう片方の子にする
 
-```mermaid
-flowchart TD
-    subgraph Before["Union 前"]
-        A1["1 (root)"] --> B1["2"]
-        A1 --> C1["3"]
-        D1["4 (root)"] --> E1["5"]
-    end
-    subgraph After["Union(3, 5) 後"]
-        A2["1 (root)"] --> B2["2"]
-        A2 --> C2["3"]
-        A2 --> D2["4"]
-        D2 --> E2["5"]
-    end
-    Before -.-> After
+```moonmaid
+flowchart TD { A1["Union 前: 1 (root)"] -> B1["2"] A1 -> C1["3"] D1["4 (root)"] -> E1["5"] A2["Union(3,5) 後: 1 (root)"] -> B2["2"] A2 -> C2["3"] A2 -> D2["4"] D2 -> E2["5"] A1 -> A2 }
 ```
 
 ## 最適化

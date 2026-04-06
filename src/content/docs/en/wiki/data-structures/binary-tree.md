@@ -20,6 +20,10 @@ Key terminology:
 
 Binary trees are a staple of coding interviews, testing recursive divide-and-conquer thinking.
 
+```moonmaid
+tree bst { insert(4, 2, 6, 1, 3, 5, 7) }
+```
+
 ```go
 type TreeNode struct {
     Val         int
@@ -31,14 +35,8 @@ type TreeNode struct {
 
 Consider the following sample tree:
 
-```mermaid
-flowchart TD
-    A((4)) --> B((2))
-    A --> C((6))
-    B --> D((1))
-    B --> E((3))
-    C --> F((5))
-    C --> G((7))
+```moonmaid
+flowchart TD { A("4") -> B("2") A -> C("6") B -> D("1") B -> E("3") C -> F("5") C -> G("7") }
 ```
 
 | Traversal | Order | Result | Use case |

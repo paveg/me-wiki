@@ -25,14 +25,8 @@ A Linked List is a linear data structure where each node holds data and a pointe
 
 Linked list problems revolve around pointer manipulation. By rewiring links between nodes, you can transform the structure without extra memory.
 
-```mermaid
-flowchart LR
-    subgraph Singly["Singly Linked List"]
-        A1["1"] --> A2["2"] --> A3["3"] --> A4["nil"]
-    end
-    subgraph Doubly["Doubly Linked List"]
-        B1["nil"] <--> B2["1"] <--> B3["2"] <--> B4["3"] <--> B5["nil"]
-    end
+```moonmaid
+flowchart LR { A1["Singly: 1"] -> A2["2"] -> A3["3"] -> A4["nil"] B1["Doubly: nil"] -> B2["1"] -> B3["2"] -> B4["3"] -> B5["nil"] }
 ```
 
 The four most common interview patterns are **reversal**, **fast & slow pointers**, **merge**, and **dummy head**.
@@ -81,11 +75,8 @@ Use two pointers moving at different speeds: slow advances 1 step, fast advances
 
 **Cycle detection (Floyd's Algorithm):**
 
-```mermaid
-flowchart LR
-    N1["1"] --> N2["2"] --> N3["3"] --> N4["4"] --> N5["5"]
-    N5 --> N3
-    style N3 fill:#f9f,stroke:#333
+```moonmaid
+flowchart LR { N1["1"] -> N2["2"] -> N3["3 (cycle start)"] -> N4["4"] -> N5["5"] N5 -> N3 }
 ```
 
 If a cycle exists, fast and slow will eventually meet. If not, fast reaches `nil`.

@@ -11,10 +11,6 @@ A personal knowledge base for learning. I research technical topics of interest,
 
 ## Learning Cycle
 
-```mermaid
-graph LR
-    A["Find a topic"] --> B["Research"]
-    B --> C["Write in wiki"]
-    C --> D["Visualize with diagrams"]
-    D --> A
+```moonmaid
+flowchart LR { A["Find a topic"] -> B["Research"] B -> C["Write in wiki"] C -> D["Visualize with diagrams"] D -> A }
 ```

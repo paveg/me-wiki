@@ -19,22 +19,8 @@ In coding interviews, heaps appear whenever you need to **efficiently retrieve t
 - **Extract min/max**: Remove the root, move the last element to the root, then swap downward (bubble down) — $O(\log n)$
 - **Peek**: Just read the root — $O(1)$
 
-```mermaid
-flowchart TD
-    subgraph Insert
-        I1["Add new element at the end"] --> I2{"Parent > child?"}
-        I2 -->|Yes| I3["Swap with parent (bubble up)"]
-        I3 --> I2
-        I2 -->|No| I4["Done"]
-    end
-
-    subgraph Extract
-        E1["Remove root"] --> E2["Move last element to root"]
-        E2 --> E3{"Parent > child?"}
-        E3 -->|Yes| E4["Swap with smallest child (bubble down)"]
-        E4 --> E3
-        E3 -->|No| E5["Done"]
-    end
+```moonmaid
+flowchart TD { I1["Add new element at the end"] -> I2{"Parent > child?"} I2 -> |"Yes"| I3["Swap with parent (bubble up)"] I3 -> I2 I2 -> |"No"| I4["Insert Done"] E1["Remove root"] -> E2["Move last element to root"] E2 -> E3{"Parent > child?"} E3 -> |"Yes"| E4["Swap with smallest child (bubble down)"] E4 -> E3 E3 -> |"No"| E5["Extract Done"] }
 ```
 
 ## Go's container/heap
@@ -88,16 +74,8 @@ Merge k sorted linked lists into one sorted list.
 
 **Key insight**: Use a min-heap of size k. Always extract the smallest node, then push its next node if it exists. With $N$ total nodes, each heap operation is $O(\log k)$, giving $O(N \log k)$ overall.
 
-```mermaid
-flowchart TD
-    S["Push head of each list\ninto min-heap"] --> L{"Heap empty?"}
-    L -->|No| P["Pop smallest node"]
-    P --> A["Append to result list"]
-    A --> N{"node.Next != nil?"}
-    N -->|Yes| PU["Push node.Next"]
-    PU --> L
-    N -->|No| L
-    L -->|Yes| D["Done"]
+```moonmaid
+flowchart TD { S["Push head of each list into min-heap"] -> L{"Heap empty?"} L -> |"No"| P["Pop smallest node"] P -> A["Append to result list"] A -> N{"node.Next != nil?"} N -> |"Yes"| PU["Push node.Next"] PU -> L N -> |"No"| L L -> |"Yes"| D["Done"] }
 ```
 
 ```go
@@ -156,22 +134,8 @@ Find the median in real time from a data stream.
 
 **Key insight — Dual Heap**: Maintain a **max-heap** (`lo`) for the lower half and a **min-heap** (`hi`) for the upper half. Keep their sizes within 1 of each other, and the median is always available from the heap roots in $O(1)$.
 
-```mermaid
-flowchart LR
-    subgraph "lo (max-heap)"
-        L1["5"]
-        L2["3"]
-        L3["1"]
-    end
-
-    subgraph "hi (min-heap)"
-        R1["8"]
-        R2["10"]
-        R3["12"]
-    end
-
-    L1 -- "max of lo ≤ min of hi" --> R1
-    M["Median = (5 + 8) / 2 = 6.5"]
+```moonmaid
+flowchart LR { L1["lo max-heap: 5"] -> L2["3"] -> L3["1"] R1["hi min-heap: 8"] -> R2["10"] -> R3["12"] L1 -> |"max of lo <= min of hi"| R1 M["Median = (5 + 8) / 2 = 6.5"] }
 ```
 
 ```go

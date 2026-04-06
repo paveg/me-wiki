@@ -17,17 +17,8 @@ Unlike brute force, backtracking applies **pruning** to cut off clearly invalid 
 2. **Explore**: Recursively proceed to the next decision under that choice
 3. **Unchoose**: After returning from recursion, undo the choice
 
-```mermaid
-flowchart TD
-    A["Goal reached?"] -->|Yes| B["Record result"]
-    A -->|No| C["Pick a candidate (Choose)"]
-    C --> D{"Valid choice?"}
-    D -->|Yes| E["Commit the choice"]
-    E --> F["Recurse (Explore)"]
-    F --> G["Undo the choice (Unchoose)"]
-    G --> C
-    D -->|No| H["Skip this candidate (Prune)"]
-    H --> C
+```moonmaid
+flowchart TD { A["Goal reached?"] -> |"Yes"| B["Record result"] A -> |"No"| C["Pick a candidate (Choose)"] C -> D{"Valid choice?"} D -> |"Yes"| E["Commit the choice"] E -> F["Recurse (Explore)"] F -> G["Undo the choice (Unchoose)"] G -> C D -> |"No"| H["Skip this candidate (Prune)"] H -> C }
 ```
 
 ## Template

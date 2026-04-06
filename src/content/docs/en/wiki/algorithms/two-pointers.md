@@ -15,18 +15,12 @@ While Sliding Window specializes in contiguous subsequences, Two Pointers is mor
 
 Determine pointer movement direction based on the current state, pruning unnecessary exploration to reduce complexity.
 
-```mermaid
-flowchart TD
-    A["Place two pointers at initial positions"] --> B{"Termination condition met?"}
-    B -->|No| C["Evaluate state from pointer positions"]
-    C --> D{"Decide which pointer to move"}
-    D -->|Left pointer| E["Move left"]
-    D -->|Right pointer| F["Move right"]
-    D -->|Both| G["Move both"]
-    E --> B
-    F --> B
-    G --> B
-    B -->|Yes| H["Return result"]
+```moonmaid
+array { [1, 2, 3, 4, 5, 6, 7] highlight(0, color=blue, label="left") highlight(6, color=red, label="right") }
+```
+
+```moonmaid
+flowchart TD { A["Place two pointers at initial positions"] -> B{"Termination condition met?"} B -> |"No"| C["Evaluate state from pointer positions"] C -> D{"Decide which pointer to move"} D -> |"Left pointer"| E["Move left"] D -> |"Right pointer"| F["Move right"] D -> |"Both"| G["Move both"] E -> B F -> B G -> B B -> |"Yes"| H["Return result"] }
 ```
 
 ## Patterns
@@ -146,17 +140,8 @@ Given an array of heights, find the maximum water a container formed by two line
 
 **Key insight:** Start with maximum width and move the shorter line inward. Moving the shorter side is the only way to potentially increase the area.
 
-```mermaid
-flowchart TD
-    A["left = 0, right = n-1"] --> B{"left < right ?"}
-    B -->|Yes| C["area = min(height[left], height[right]) × (right - left)"]
-    C --> D["maxArea = max(maxArea, area)"]
-    D --> E{"height[left] < height[right] ?"}
-    E -->|Yes| F["left++"]
-    E -->|No| G["right--"]
-    F --> B
-    G --> B
-    B -->|No| H["return maxArea"]
+```moonmaid
+flowchart TD { A["left = 0, right = n-1"] -> B{"left < right ?"} B -> |"Yes"| C["area = min(height[left], height[right]) * (right - left)"] C -> D["maxArea = max(maxArea, area)"] D -> E{"height[left] < height[right] ?"} E -> |"Yes"| F["left++"] E -> |"No"| G["right--"] F -> B G -> B B -> |"No"| H["return maxArea"] }
 ```
 
 ```go

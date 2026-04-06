@@ -28,20 +28,8 @@ There are two main approaches.
 
 If all nodes are processed, a valid topological order is found. If some nodes remain, a cycle exists.
 
-```mermaid
-flowchart TD
-    A["Compute indegree for each node"] --> B["Enqueue nodes with indegree 0"]
-    B --> C["Dequeue a node"]
-    C --> D["Append to result"]
-    D --> E["Decrement neighbors' indegree by 1"]
-    E --> F{"Indegree became 0?"}
-    F -->|Yes| G["Enqueue neighbor"]
-    F -->|No| H{"Queue empty?"}
-    G --> H
-    H -->|No| C
-    H -->|Yes| I{"All nodes processed?"}
-    I -->|Yes| J["Topological order complete"]
-    I -->|No| K["Cycle detected"]
+```moonmaid
+flowchart TD { A["Compute indegree for each node"] -> B["Enqueue nodes with indegree 0"] B -> C["Dequeue a node"] C -> D["Append to result"] D -> E["Decrement neighbors' indegree by 1"] E -> F{"Indegree became 0?"} F -> |"Yes"| G["Enqueue neighbor"] F -> |"No"| H{"Queue empty?"} G -> H H -> |"No"| C H -> |"Yes"| I{"All nodes processed?"} I -> |"Yes"| J["Topological order complete"] I -> |"No"| K["Cycle detected"] }
 ```
 
 ### DFS-Based
@@ -152,6 +140,8 @@ func dfsTopologicalSort(numNodes int, edges [][]int) ([]int, bool) {
 ```
 
 ## Complexity
+
+$V$ = number of vertices, $E$ = number of edges
 
 | | Time | Space |
 |---|---|---|

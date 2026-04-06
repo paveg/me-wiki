@@ -13,16 +13,8 @@ Interval problems are a frequently tested category in algorithm interviews. They
 
 Sort intervals by **start time**, then sweep from left to right, detecting and handling overlaps. Compare the end time of the previous interval with the start time of the current interval to determine overlap.
 
-```mermaid
-flowchart TD
-    A["Sort intervals by start time"] --> B["Add the first interval to result"]
-    B --> C{"Next interval exists?"}
-    C -->|Yes| D{"Does current overlap with previous?"}
-    D -->|Yes| E["Extend end time of previous interval"]
-    D -->|No| F["Add current interval to result"]
-    E --> C
-    F --> C
-    C -->|No| G["Return result"]
+```moonmaid
+flowchart TD { A["Sort intervals by start time"] -> B["Add the first interval to result"] B -> C{"Next interval exists?"} C -> |"Yes"| D{"Does current overlap with previous?"} D -> |"Yes"| E["Extend end time of previous interval"] D -> |"No"| F["Add current interval to result"] E -> C F -> C C -> |"No"| G["Return result"] }
 ```
 
 ## Patterns
