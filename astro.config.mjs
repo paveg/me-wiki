@@ -37,9 +37,6 @@ export default defineConfig({
 			pagination: false,
 			editLink: undefined,
 			credits: false,
-			components: {
-				Footer: "./src/components/Footer.astro",
-			},
 			customCss: ["katex/dist/katex.min.css", "./src/styles/custom.css"],
 			sidebar: [
 				{

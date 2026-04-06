@@ -99,40 +99,16 @@ starlight-menu-button button,
 	border-radius: 0.5rem;
 }
 
-/* -- Mermaid diagrams: light/dark toggle -- */
 
-.mermaid-diagram {
+/* -- moonmaid diagrams -- */
+
+.moonmaid {
 	margin: 1.5rem 0;
-	border-radius: 0.75rem;
-	overflow: hidden;
 }
 
-.mermaid-diagram svg {
+.moonmaid svg {
 	display: block;
 	max-width: 100%;
 	height: auto;
 	margin: 0 auto;
-}
-
-:root[data-theme="dark"] .mermaid-light,
-:root:not([data-theme="dark"]) .mermaid-dark {
-	display: none;
-}
-
-@media (prefers-color-scheme: dark) {
-	:root[data-theme="auto"] .mermaid-light {
-		display: none;
-	}
-	:root[data-theme="auto"] .mermaid-dark {
-		display: block;
-	}
-}
-
-@media (prefers-color-scheme: light) {
-	:root[data-theme="auto"] .mermaid-light {
-		display: block;
-	}
-	:root[data-theme="auto"] .mermaid-dark {
-		display: none;
-	}
 }
