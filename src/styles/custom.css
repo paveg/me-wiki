@@ -100,6 +100,18 @@ starlight-menu-button button,
 }
 
 
+/* -- Footnotes overflow fix -- */
+
+.footnotes {
+	overflow-wrap: break-word;
+	word-break: break-all;
+}
+
+.footnotes li {
+	max-width: 100%;
+	overflow-wrap: break-word;
+}
+
 /* -- moonmaid diagrams -- */
 
 .moonmaid {

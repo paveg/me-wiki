@@ -37,14 +37,15 @@ The window size is predetermined. `left` advances at the same pace as `right`.
 **Template:**
 
 ```go
-// k: window size
-for right := 0; right < len(arr); right++ {
-    // add arr[right] to window state
-    if right >= k {
-        // remove arr[right-k] from window state
-    }
-    if right >= k-1 {
-        // window is full — record result
+func fixedWindow(arr []int, k int) {
+    for right := 0; right < len(arr); right++ {
+        // add arr[right] to window state
+        if right >= k {
+            // remove arr[right-k] from window state
+        }
+        if right >= k-1 {
+            // window is full — record result
+        }
     }
 }
 ```
@@ -58,14 +59,21 @@ Finding the longest or shortest window satisfying a condition. `left` only advan
 **Template:**
 
 ```go
-left := 0
-for right := 0; right < len(arr); right++ {
-    // add arr[right] to window state
-    for /* window violates condition */ {
-        // remove arr[left] from window state
-        left++
+func variableWindow(arr []int) int {
+    left := 0
+    maxLen := 0
+    for right := 0; right < len(arr); right++ {
+        // add arr[right] to window state
+        for /* window violates condition */ {
+            // remove arr[left] from window state
+            left++
+        }
+        // update result
+        if right-left+1 > maxLen {
+            maxLen = right - left + 1
+        }
     }
-    // update result (e.g., max length = right - left + 1)
+    return maxLen
 }
 ```
 

@@ -39,14 +39,15 @@ array { [1, 3, 2, 5, 1, 4] highlight(1..3, color=blue, label="window") }
 **テンプレート:**
 
 ```go
-// k: window size
-for right := 0; right < len(arr); right++ {
-    // add arr[right] to window state
-    if right >= k {
-        // remove arr[right-k] from window state
-    }
-    if right >= k-1 {
-        // window is full — record result
+func fixedWindow(arr []int, k int) {
+    for right := 0; right < len(arr); right++ {
+        // add arr[right] to window state
+        if right >= k {
+            // remove arr[right-k] from window state
+        }
+        if right >= k-1 {
+            // window is full — record result
+        }
     }
 }
 ```
@@ -60,14 +61,21 @@ for right := 0; right < len(arr); right++ {
 **テンプレート:**
 
 ```go
-left := 0
-for right := 0; right < len(arr); right++ {
-    // add arr[right] to window state
-    for /* window violates condition */ {
-        // remove arr[left] from window state
-        left++
+func variableWindow(arr []int) int {
+    left := 0
+    maxLen := 0
+    for right := 0; right < len(arr); right++ {
+        // add arr[right] to window state
+        for /* window violates condition */ {
+            // remove arr[left] from window state
+            left++
+        }
+        // update result
+        if right-left+1 > maxLen {
+            maxLen = right - left + 1
+        }
     }
-    // update result (e.g., max length = right - left + 1)
+    return maxLen
 }
 ```
 

@@ -24,3 +24,13 @@ array { [3, 1, 4, 1, 5, 9] }
 ```moonmaid
 tree bst { insert(5, 3, 7, 1, 4) }
 ```
+
+## アニメーションテスト
+
+```moonmaid
+array @animate { [5, 3, 8, 1, 9] sort: bubble }
+```
+
+```moonmaid
+tree bst @animate { insert(5, 3, 7, 1, 4) }
+```

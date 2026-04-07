@@ -41,7 +41,11 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: "Wiki",
-					items: [{ slug: "wiki/getting-started" }, { slug: "wiki/todo" }],
+					items: [
+							{ slug: "wiki/getting-started" },
+							{ slug: "wiki/pattern-recognition" },
+							{ slug: "wiki/todo" },
+						],
 				},
 				{
 					label: "Algorithms",

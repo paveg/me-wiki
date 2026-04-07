@@ -1,0 +1,24 @@
+---
+title: Algorithms
+description: アルゴリズムの一覧
+sidebar:
+  order: 0
+---
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+コーディング面接で頻出するアルゴリズム手法をまとめています。
+
+<CardGrid>
+  <LinkCard title="Sliding Window" href="/wiki/algorithms/sliding-window/" description="配列・文字列の連続部分列を効率的に探索" />
+  <LinkCard title="Two Pointers" href="/wiki/algorithms/two-pointers/" description="2つのポインタで O(n²) → O(n) に削減" />
+  <LinkCard title="Binary Search" href="/wiki/algorithms/binary-search/" description="ソート済み配列の O(log n) 探索" />
+  <LinkCard title="DFS" href="/wiki/algorithms/dfs/" description="深さ優先探索と Flood Fill パターン" />
+  <LinkCard title="BFS" href="/wiki/algorithms/bfs/" description="幅優先探索と最短経路" />
+  <LinkCard title="Dynamic Programming" href="/wiki/algorithms/dynamic-programming/" description="最適部分構造 + 重複部分問題" />
+  <LinkCard title="Greedy" href="/wiki/algorithms/greedy/" description="局所最適の積み重ねで全体最適" />
+  <LinkCard title="Backtracking" href="/wiki/algorithms/backtracking/" description="全探索 + 枝刈り" />
+  <LinkCard title="Topological Sort" href="/wiki/algorithms/topological-sort/" description="DAG の順序付け" />
+  <LinkCard title="Monotonic Stack" href="/wiki/algorithms/monotonic-stack/" description="Next Greater Element パターン" />
+  <LinkCard title="Merge Intervals" href="/wiki/algorithms/merge-intervals/" description="区間のマージ・挿入・削除" />
+</CardGrid>

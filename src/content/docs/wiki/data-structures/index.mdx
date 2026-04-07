@@ -1,0 +1,19 @@
+---
+title: Data Structures
+description: データ構造の一覧
+sidebar:
+  order: 0
+---
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+コーディング面接で頻出するデータ構造をまとめています。
+
+<CardGrid>
+  <LinkCard title="LRU Cache" href="/wiki/data-structures/lru-cache/" description="HashMap + 双方向連結リストで O(1) キャッシュ" />
+  <LinkCard title="Heap / Priority Queue" href="/wiki/data-structures/heap/" description="動的な最小値/最大値の効率的な管理" />
+  <LinkCard title="Binary Tree / BST" href="/wiki/data-structures/binary-tree/" description="木の走査、構築、パス探索" />
+  <LinkCard title="Union-Find" href="/wiki/data-structures/union-find/" description="動的な連結成分管理" />
+  <LinkCard title="Linked List" href="/wiki/data-structures/linked-list/" description="反転、マージ、サイクル検出" />
+  <LinkCard title="Trie" href="/wiki/data-structures/trie/" description="プレフィックスベースの文字列検索" />
+</CardGrid>

@@ -25,29 +25,33 @@ flowchart TD { A["Enqueue starting node"] -> B["Dequeue front element"] B -> C{"
 ## Template (Grid)
 
 ```go
-type point struct{ i, j int }
-dirs := [][2]int{{-1,0},{1,0},{0,-1},{0,1}}
+func bfsGrid(grid [][]int, startI, startJ int, wall int) int {
+    rows, cols := len(grid), len(grid[0])
+    type point struct{ i, j int }
+    dirs := [][2]int{{-1, 0}, {1, 0}, {0, -1}, {0, 1}}
 
-queue := []point{{startI, startJ}}
-visited := map[point]bool{{startI, startJ}: true}
-steps := 0
+    queue := []point{{startI, startJ}}
+    visited := map[point]bool{{startI, startJ}: true}
+    steps := 0
 
-for len(queue) > 0 {
-    size := len(queue) // current level size
-    for k := 0; k < size; k++ {
-        p := queue[0]
-        queue = queue[1:]
-        // process p (e.g., check if goal)
-        for _, d := range dirs {
-            np := point{p.i + d[0], p.j + d[1]}
-            if np.i >= 0 && np.i < rows && np.j >= 0 && np.j < cols &&
-                !visited[np] && grid[np.i][np.j] != wall {
-                visited[np] = true
-                queue = append(queue, np)
+    for len(queue) > 0 {
+        size := len(queue) // current level size
+        for k := 0; k < size; k++ {
+            p := queue[0]
+            queue = queue[1:]
+            // process p (e.g., check if goal reached)
+            for _, d := range dirs {
+                np := point{p.i + d[0], p.j + d[1]}
+                if np.i >= 0 && np.i < rows && np.j >= 0 && np.j < cols &&
+                    !visited[np] && grid[np.i][np.j] != wall {
+                    visited[np] = true
+                    queue = append(queue, np)
+                }
             }
         }
+        steps++ // one level completed
     }
-    steps++ // one level completed
+    return steps
 }
 ```
 

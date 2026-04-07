@@ -35,38 +35,37 @@ flowchart TD { A["Select starting node"] -> B["Mark as visited"] B -> C{"Unvisit
 
 **Recursion template (grid):**
 
-`rows` = number of rows, `cols` = number of columns, `visited` = value representing a visited cell.
-
 ```go
-var dfs func(i, j int)
-dfs = func(i, j int) {
+func dfsGrid(grid [][]int, i, j int, visited int) {
+    rows, cols := len(grid), len(grid[0])
     if i < 0 || i >= rows || j < 0 || j >= cols || grid[i][j] == visited {
         return
     }
     grid[i][j] = visited
-    dfs(i-1, j) // up
-    dfs(i+1, j) // down
-    dfs(i, j-1) // left
-    dfs(i, j+1) // right
+    dfsGrid(grid, i-1, j, visited) // up
+    dfsGrid(grid, i+1, j, visited) // down
+    dfsGrid(grid, i, j-1, visited) // left
+    dfsGrid(grid, i, j+1, visited) // right
 }
 ```
 
 **Stack template (grid):**
 
-`startI`, `startJ` = starting position. `rows`, `cols`, `visited` same as above.
-
 ```go
-stack := [][]int{{startI, startJ}}
-grid[startI][startJ] = visited
-for len(stack) > 0 {
-    top := stack[len(stack)-1]
-    stack = stack[:len(stack)-1]
-    i, j := top[0], top[1]
-    for _, d := range [][2]int{{-1,0},{1,0},{0,-1},{0,1}} {
-        ni, nj := i+d[0], j+d[1]
-        if ni >= 0 && ni < rows && nj >= 0 && nj < cols && grid[ni][nj] != visited {
-            grid[ni][nj] = visited
-            stack = append(stack, []int{ni, nj})
+func dfsStack(grid [][]int, startI, startJ int, visited int) {
+    rows, cols := len(grid), len(grid[0])
+    stack := [][]int{{startI, startJ}}
+    grid[startI][startJ] = visited
+    for len(stack) > 0 {
+        top := stack[len(stack)-1]
+        stack = stack[:len(stack)-1]
+        i, j := top[0], top[1]
+        for _, d := range [][2]int{{-1, 0}, {1, 0}, {0, -1}, {0, 1}} {
+            ni, nj := i+d[0], j+d[1]
+            if ni >= 0 && ni < rows && nj >= 0 && nj < cols && grid[ni][nj] != visited {
+                grid[ni][nj] = visited
+                stack = append(stack, []int{ni, nj})
+            }
         }
     }
 }
