@@ -1,11 +1,11 @@
 // @ts-check
 
+import { resolve } from "node:path";
 import starlight from "@astrojs/starlight";
 import { defineConfig } from "astro/config";
+import remarkMoonmaid from "moonmaid/remark-plugin";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
-import remarkMoonmaid from "moonmaid/remark-plugin";
-import { resolve } from "node:path";
 
 const moonmaidWasmPath =
 	"file://" + resolve(process.cwd(), "src/moonmaid.wasm");
@@ -42,10 +42,10 @@ export default defineConfig({
 				{
 					label: "Wiki",
 					items: [
-							{ slug: "wiki/getting-started" },
-							{ slug: "wiki/pattern-recognition" },
-							{ slug: "wiki/todo" },
-						],
+						{ slug: "wiki/getting-started" },
+						{ slug: "wiki/pattern-recognition" },
+						{ slug: "wiki/todo" },
+					],
 				},
 				{
 					label: "Algorithms",
