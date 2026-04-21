@@ -14,7 +14,7 @@
 	},
 	"dependencies": {
 		"@astrojs/starlight": "^0.38.2",
-		"astro": "^6.0.1",
+		"astro": "^6.1.6",
 		"katex": "0.16.44",
 		"moonmaid": "link:../moonmaid/ts",
 		"rehype-katex": "7.0.1",
